@@ -2524,7 +2524,7 @@
     };
 
     function mf(a, b, c = !0, d = 12) {
-        a = new nf( of (a, b), c);
+        a = new nf(of(a, b), c);
         a.framesPerSecond = d;
         return a
     }
@@ -2561,7 +2561,7 @@
             }
         };
 
-    function of (a, b) {
+    function of(a, b) {
         const c = [];
         for (const d of b) c.push(new sf(jf(a, d)));
         return c
@@ -10362,7 +10362,7 @@
             b = new F(uf(Oi[0]));
             c = nf;
             if (tf === void 0) throw Error();
-            var d = of (tf, Oi);
+            var d = of(tf, Oi);
             this.i = new B(a, b, new c(d));
             C(this.g, this.j);
             C(this.g, this.i);
