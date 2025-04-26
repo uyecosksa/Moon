@@ -1829,13 +1829,7 @@
         return b
     };
     var Dd = a => {
-        let b = new Image;
-        b.onerror = b.onload = b.onabort = () => {
-            delete Bd[Cd]
-        };
-        Bd[Cd] = b;
-        b.src = `${""}/gen_204?atyp=i&ct=${"doodle"}&cad=${a}&zx=${Date.now()}`;
-        Cd++
+        return;
     };
     let Bd = [],
         Cd = 0;
