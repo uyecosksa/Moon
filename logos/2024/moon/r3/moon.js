@@ -9289,11 +9289,8 @@
             sb = a.Ye;
         a = a.Te;
         return L('<div class="' + M("ddl-container") + '"' + (a != null ? " ssk='" + M(Qh("fMIyXb") + a) + "'" : "") + '><svg xmlns="http://www.w3.org/2000/svg" class="' + M("ddl-progress-svg-container") + '" viewBox="0 0 ' + M(b) + " " + M(c) + '"></svg><canvas class="' + M("ddl-progress-canvas") + '" width="' + M(b) + '" height="' + M(c) + '"></canvas><div class="' + M("ddl-progress-top-message") + '">' + K(x) + '</div><div class="' + M("ddl-progress-results") +
-            '"><div class="' + M("ddl-progress-results-title") + '">' + K(d) + '</div><table class="' + M("ddl-progress-results-stats") + '" cellspacing="6" cellpadding="0"><tr><th>' + K(f) + '</th><td class="' + M("ddl-progress-results-level-stars") + '"></td></tr><tr><th>' + K(g) + '</th><td class="' + M("ddl-progress-results-total-stars") + '"></td></tr></table></div><div class="' + M("ddl-progress-buttons") + '"><button class="' + M("ddl-progress-search-button") + " " + M("ddl-button") + " " + M("ddl-button-default") + '" aria-label="' + M(l) + '" title="' +
-            M(l) + '">' + L('<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 -960 960 960" class="ddl-progress-search-icon"><path d="m783.28-154-254.2-254.21q-29.8 26.4-69.18 40.46-39.37 14.06-79.18 14.06-95.76 0-162.09-66.2-66.32-66.19-66.32-161.52 0-95.33 66.19-161.65 66.2-66.32 161.49-66.32t161.91 66.23q66.61 66.23 66.61 161.53 0 41.36-14.77 80.77t-40.41 68.39l254.36 253.54L783.28-154ZM380.56-387.54q81.65 0 137.88-56.09 56.23-56.09 56.23-137.91t-56.23-137.91q-56.23-56.09-137.88-56.09-81.77 0-138.09 56.09-56.32 56.09-56.32 137.91t56.32 137.91q56.32 56.09 138.09 56.09Z"/></svg>') +
-            '</button><button class="' + M("ddl-progress-continue-button") + " " + M("ddl-button") + " " + M("ddl-button-default") + '">' + K(h) + '</button><button class="' + M("ddl-progress-share-button") + " " + M("ddl-button") + " " + M("ddl-button-default") + '" aria-label="' + M(p) + '" title="' + M(p) + '">' + L('<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 -960 960 960" class="ddl-progress-share-icon">' + (sb ? '<path d="M258.46-80q-24.58 0-41.52-16.94Q200-113.88 200-138.46v-412.16q0-24.57 16.94-41.52 16.94-16.94 41.52-16.94h99.85v33.85h-99.85q-9.23 0-16.92 7.69-7.69 7.69-7.69 16.92v412.16q0 9.23 7.69 16.92 7.69 7.69 16.92 7.69h443.08q9.23 0 16.92-7.69 7.69-7.69 7.69-16.92v-412.16q0-9.23-7.69-16.92-7.69-7.69-16.92-7.69H601.38v-33.85h100.16q24.58 0 41.52 16.94Q760-575.19 760-550.62v412.16q0 24.58-16.94 41.52Q726.12-80 701.54-80H258.46Zm204.46-268.26V-786.8l-91.28 91.29-24.77-24.34 132.98-132.46 132.46 132.46-24.26 24.34-91.28-91.29v438.54h-33.85Z"/>' :
-                    '<path d="M666.38-120q-38.66 0-65.96-27.42-27.29-27.43-27.29-66.02 0-6.89 5.61-32.25L285.49-419.85q-13.01 15.6-31.92 24.45-18.9 8.84-40.9 8.84-38.27 0-65.47-27.55-27.2-27.54-27.2-66.01 0-38.47 27.2-65.89 27.2-27.43 65.3-27.43 21.65 0 40.45 8.52 18.79 8.52 31.72 24.46l294.07-173.08q-2.77-7.92-4.19-16.14-1.42-8.22-1.42-16.96 0-38.51 27.47-65.94Q628.08-840 666.75-840q38.66 0 65.96 27.48Q760-785.05 760-746.38q0 38.66-27.42 65.96-27.43 27.29-66.17 27.29-21.52 0-39.68-8.96-18.17-8.96-31.09-23.96L301.1-513.33q2.93 7.92 4.35 16.29 1.42 8.37 1.42 16.96 0 8.59-1.34 16.4-1.35 7.81-4.12 15.73l294.9 173.85q13.11-15 31.06-23.89 17.95-8.88 39.23-8.88 38.89 0 66.14 27.47Q760-251.92 760-213.25q0 38.66-27.48 65.96Q705.05-120 666.38-120Zm.3-33.85q25.37 0 42.42-17.16 17.05-17.17 17.05-42.54 0-25.37-17.16-42.42-17.17-17.06-42.54-17.06-25.37 0-42.42 17.17-17.06 17.16-17.06 42.54 0 25.37 17.17 42.42 17.16 17.05 42.54 17.05Zm-453.9-266.56q25.7 0 42.97-17.16 17.28-17.17 17.28-42.54 0-25.38-17.39-42.43t-43.09-17.05q-25.04 0-41.87 17.16-16.83 17.17-16.83 42.54 0 25.38 16.94 42.43t41.99 17.05Zm453.9-266.56q25.37 0 42.42-17.17 17.05-17.16 17.05-42.54 0-25.37-17.16-42.42-17.17-17.05-42.54-17.05-25.37 0-42.42 17.16-17.06 17.17-17.06 42.54 0 25.37 17.17 42.42 17.16 17.06 42.54 17.06Zm-.12 473.53ZM213.44-480Zm453.12-266.56Z"/>') +
-                "</svg>") + '</button></div><div class="' + M("ddl-progress-bottom-message") + '">' + K(Q) + '</div><div class="' + M("ddl-progress-next-level-title") + '">' + K(e) + "</div></div>")
+            '"><div class="' + M("ddl-progress-results-title") + '">' + K(d) + '</div><table class="' + M("ddl-progress-results-stats") + '" cellspacing="6" cellpadding="0"><tr><th>' + K(f) + '</th><td class="' + M("ddl-progress-results-level-stars") + '"></td></tr><tr><th>' + K(g) + '</th><td class="' + M("ddl-progress-results-total-stars") + '"></td></tr></table></div><div class="' + M("ddl-progress-buttons") +
+            '"><button class="' + M("ddl-progress-continue-button") + " " + M("ddl-button") + " " + M("ddl-button-default") + '">' + K(h) + '</button></div><div class="' + M("ddl-progress-bottom-message") + '">' + K(Q) + '</div><div class="' + M("ddl-progress-next-level-title") + '">' + K(e) + "</div></div>")
     }
 
     function Gn(a) {
@@ -9592,37 +9589,10 @@
             this.vb = Z(this, ".ddl-progress-top-message");
             this.qb = Z(this, ".ddl-progress-bottom-message");
             this.buttons = Z(this, ".ddl-progress-buttons");
-            this.Ta = Z(this, ".ddl-progress-search-button");
-            this.ka = Z(this, ".ddl-progress-share-button");
             this.ta = ko[this.mode]
         }
         o() {
             this.mode !== 1 && qj(R(), this.ta, 750);
-            this.Ta.addEventListener("click", () => {
-                S(R(), w.wb);
-                I(3);
-                var d;
-                (d = se("url", "")) && og(d, !0)
-            });
-            const a = ve(xh),
-                b = ze ? `#GoogleDoodle ${U("share_msg")}` : `${U("share_msg")} #GoogleDoodle`,
-                c = new vi(this.Da, b, a, xh, () => {
-                    this.W.inert = !0;
-                    this.W.ariaHidden = "true"
-                }, () => {
-                    this.W.inert = !1;
-                    this.W.ariaHidden = "false";
-                    this.ka.focus()
-                });
-            this.ka.addEventListener("click", () => {
-                pi(a, b, () => {
-                    S(R(), w.wb);
-                    I(18);
-                    c.o();
-                    c.oa.appendChild(c.g);
-                    c.i.focus()
-                })
-            });
             jn(this, 1);
             J(this.vb, 28, 470, 80, 24);
             J(this.qb, 28, 470, 80, 24);
