@@ -5172,7 +5172,7 @@
     })();
     const gj = new URLSearchParams(window.location.search);
     var xh = se("id", "350977392"),
-        hj = ["ddl-has_seen_tutorial", "ddl-has_seen_wildcard_tutorial", "ddl-has_played_wildcard_tutorial", "ddl-unlocked_wildcards"],
+        hj = ["ddl-has_seen_tutorial", "ddl-has_seen_wildcard_tutorial", "ddl-has_played_wildcard_tutorial", "ddl-unlocked_wildcards", "ddl-has_seen_intro_video"],
         ij = gj.has("debugGame") && !1,
         jj = gj.get("debugGame"),
         kj = gj.has("resetStorage") && !1,
@@ -10369,6 +10369,13 @@
             this.va = N(yo, {
                 text: U("skip")
             });
+            const hasSeenIntroVideo = Bh("ddl-has_seen_intro_video", !1);
+            if (!hasSeenIntroVideo) {
+                this.va.style.display = "none";
+                this.va.style.visibility = "hidden";
+                this.va.style.opacity = "0";
+                this.va.style.pointerEvents = "none";
+            }
             this.va.addEventListener("click", () => {
                 S(R(), w.wb);
                 this.g.resolve()
@@ -10382,7 +10389,7 @@
 
     function Jo() {
         return L('<div class="' + M("ddl-intro-text") + '"></div>')
-    };
+    }
 
     function Ko(a, b) {
         if (a.v.length !== 0) {
@@ -10441,10 +10448,20 @@
             return m(function* () {
                 jn(a, 1);
                 J(a.j.va, 24, 175, 70, 18);
+                const hasSeenIntroVideo = Bh("ddl-has_seen_intro_video", !1);
+                if (!hasSeenIntroVideo) {
+                    a.j.va.style.display = "none";
+                    a.j.va.style.visibility = "hidden";
+                    a.j.va.style.opacity = "0";
+                    a.j.va.style.pointerEvents = "none";
+                }
                 a.video.g.addEventListener("timeupdate", () => {
                     const b = a.video.g.currentTime;
                     Ko(a, b * 1E3);
-                    b > 29 && Mo(a, !1)
+                    if (b > 29) {
+                        Mo(a, !1);
+                        Ch("ddl-has_seen_intro_video", !0);
+                    }
                 });
                 C(a.i, a.actions);
                 a.i.g = [new Xe(a.i)];
