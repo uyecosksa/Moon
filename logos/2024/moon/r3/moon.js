@@ -1,6 +1,6 @@
-(function() {
+(function () {
     'use strict';
-    var k, aa = typeof Object.defineProperties == "function" ? Object.defineProperty : function(a, b, c) {
+    var k, aa = typeof Object.defineProperties == "function" ? Object.defineProperty : function (a, b, c) {
         if (a == Array.prototype || a == Object.prototype) return a;
         a[b] = c.value;
         return a
@@ -18,13 +18,13 @@
 
     function da(a, b) {
         if (b) a: {
-            var c = ca;a = a.split(".");
+            var c = ca; a = a.split(".");
             for (var d = 0; d < a.length - 1; d++) {
                 var e = a[d];
                 if (!(e in c)) break a;
                 c = c[e]
             }
-            a = a[a.length - 1];d = c[a];b = b(d);b != d && b != null && aa(c, a, {
+            a = a[a.length - 1]; d = c[a]; b = b(d); b != d && b != null && aa(c, a, {
                 configurable: !0,
                 writable: !0,
                 value: b
@@ -37,17 +37,17 @@
         var fa;
         a: {
             var ha = {
-                    a: !0
-                },
+                a: !0
+            },
                 ia = {};
             try {
                 ia.__proto__ = ha;
                 fa = ia.a;
                 break a
-            } catch (a) {}
+            } catch (a) { }
             fa = !1
         }
-        ea = fa ? function(a, b) {
+        ea = fa ? function (a, b) {
             a.__proto__ = b;
             if (a.__proto__ !== b) throw new TypeError("b`" + a);
             return a
@@ -63,7 +63,7 @@
         function c(d) {
             return a.throw(d)
         }
-        return new Promise(function(d, e) {
+        return new Promise(function (d, e) {
             function f(g) {
                 g.done ? d(g.value) : Promise.resolve(g.value).then(b, c).then(f, e)
             }
@@ -74,8 +74,8 @@
     function m(a) {
         return ka(a())
     }
-    var la = typeof Object.create == "function" ? Object.create : function(a) {
-        function b() {}
+    var la = typeof Object.create == "function" ? Object.create : function (a) {
+        function b() { }
         b.prototype = a;
         return new b
     };
@@ -93,7 +93,7 @@
                     } else a[c] = b[c];
         a.ub = b.prototype
     }
-    da("Symbol.dispose", function(a) {
+    da("Symbol.dispose", function (a) {
         return a ? a : Symbol("Symbol.dispose")
     });
 
@@ -102,7 +102,7 @@
         var c = 0,
             d = !1,
             e = {
-                next: function() {
+                next: function () {
                     if (!d && c < a.length) {
                         var f = c++;
                         return {
@@ -117,36 +117,36 @@
                     }
                 }
             };
-        e[Symbol.iterator] = function() {
+        e[Symbol.iterator] = function () {
             return e
         };
         return e
     }
-    da("Array.prototype.values", function(a) {
-        return a ? a : function() {
-            return na(this, function(b, c) {
+    da("Array.prototype.values", function (a) {
+        return a ? a : function () {
+            return na(this, function (b, c) {
                 return c
             })
         }
     });
-    da("globalThis", function(a) {
+    da("globalThis", function (a) {
         return a || ca
     });
-    da("Promise.prototype.finally", function(a) {
-        return a ? a : function(b) {
-            return this.then(function(c) {
-                return Promise.resolve(b()).then(function() {
+    da("Promise.prototype.finally", function (a) {
+        return a ? a : function (b) {
+            return this.then(function (c) {
+                return Promise.resolve(b()).then(function () {
                     return c
                 })
-            }, function(c) {
-                return Promise.resolve(b()).then(function() {
+            }, function (c) {
+                return Promise.resolve(b()).then(function () {
                     throw c;
                 })
             })
         }
     });
-    da("Array.prototype.includes", function(a) {
-        return a ? a : function(b, c) {
+    da("Array.prototype.includes", function (a) {
+        return a ? a : function (b, c) {
             var d = this;
             d instanceof String && (d = String(d));
             var e = d.length;
@@ -158,30 +158,30 @@
             return !1
         }
     });
-    da("Object.entries", function(a) {
-        return a ? a : function(b) {
+    da("Object.entries", function (a) {
+        return a ? a : function (b) {
             var c = [],
                 d;
             for (d in b) Object.prototype.hasOwnProperty.call(b, d) && c.push([d, b[d]]);
             return c
         }
     });
-    da("Object.values", function(a) {
-        return a ? a : function(b) {
+    da("Object.values", function (a) {
+        return a ? a : function (b) {
             var c = [],
                 d;
             for (d in b) Object.prototype.hasOwnProperty.call(b, d) && c.push(b[d]);
             return c
         }
     });
-    da("String.prototype.matchAll", function(a) {
-        return a ? a : function(b) {
+    da("String.prototype.matchAll", function (a) {
+        return a ? a : function (b) {
             if (b instanceof RegExp && !b.global) throw new TypeError("c");
             var c = new RegExp(b, b instanceof RegExp ? void 0 : "g"),
                 d = this,
                 e = !1,
                 f = {
-                    next: function() {
+                    next: function () {
                         if (e) return {
                             value: void 0,
                             done: !0
@@ -198,13 +198,13 @@
                         }
                     }
                 };
-            f[Symbol.iterator] = function() {
+            f[Symbol.iterator] = function () {
                 return f
             };
             return f
         }
     });
-    da("AggregateError", function(a) {
+    da("AggregateError", function (a) {
         function b(c, d) {
             d = Error(d);
             "stack" in d && (this.stack = d.stack);
@@ -216,18 +216,18 @@
         b.prototype.name = "AggregateError";
         return b
     });
-    da("Promise.any", function(a) {
-        return a ? a : function(b) {
+    da("Promise.any", function (a) {
+        return a ? a : function (b) {
             b = b instanceof Array ? b : Array.from(b);
-            return Promise.all(b.map(function(c) {
-                return Promise.resolve(c).then(function(d) {
+            return Promise.all(b.map(function (c) {
+                return Promise.resolve(c).then(function (d) {
                     throw d;
-                }, function(d) {
+                }, function (d) {
                     return d
                 })
-            })).then(function(c) {
+            })).then(function (c) {
                 throw new AggregateError(c, "All promises were rejected");
-            }, function(c) {
+            }, function (c) {
                 return c
             })
         }
@@ -259,13 +259,13 @@
         if (!a) throw Error();
         if (arguments.length > 2) {
             var d = Array.prototype.slice.call(arguments, 2);
-            return function() {
+            return function () {
                 var e = Array.prototype.slice.call(arguments);
                 Array.prototype.unshift.apply(e, d);
                 return a.apply(b, e)
             }
         }
-        return function() {
+        return function () {
             return a.apply(b, arguments)
         }
     }
@@ -283,35 +283,35 @@
     }
 
     function wa(a, b) {
-        function c() {}
+        function c() { }
         c.prototype = b.prototype;
         a.ub = b.prototype;
         a.prototype = new c;
         a.prototype.constructor = a;
-        a.ff = function(d, e, f) {
+        a.ff = function (d, e, f) {
             for (var g = Array(arguments.length - 2), h = 2; h < arguments.length; h++) g[h - 2] = arguments[h];
             return b.prototype[e].apply(d, g)
         }
     };
     var xa = class {
-            constructor() {
-                this.state = 0;
-                this.H = !1
-            }
-            update(a) {
-                this.state === 0 && (this.j(), this.state = 1);
-                this.state !== 1 || this.H || this.g() || this.Va(a);
-                (this.H || this.g()) && this.state !== 2 && (this.state = 2)
-            }
-            g() {
-                return !1
-            }
-            then(a) {
-                return new n([this, a instanceof Function ? new q(a) : a])
-            }
-            j() {}
-            Va() {}
-        },
+        constructor() {
+            this.state = 0;
+            this.H = !1
+        }
+        update(a) {
+            this.state === 0 && (this.j(), this.state = 1);
+            this.state !== 1 || this.H || this.g() || this.Va(a);
+            (this.H || this.g()) && this.state !== 2 && (this.state = 2)
+        }
+        g() {
+            return !1
+        }
+        then(a) {
+            return new n([this, a instanceof Function ? new q(a) : a])
+        }
+        j() { }
+        Va() { }
+    },
         ya = class extends xa {
             constructor(a) {
                 super();
@@ -396,7 +396,7 @@
         this.x2 = c;
         this.y2 = d
     }
-    Ba.prototype.equals = function(a) {
+    Ba.prototype.equals = function (a) {
         return this.x1 == a.x1 && this.y1 == a.y1 && this.x2 == a.x2 && this.y2 == a.y2 && !0
     };
 
@@ -457,25 +457,25 @@
         return a
     }
     var Oa = class extends xa {
-            constructor(a, b, c) {
-                super();
-                this.o = a;
-                this.from = b;
-                this.N = c;
-                this.i = 0;
-                this.u = Ga
-            }
-            j() {
-                this.o === 0 && this.v(this.from, this.N, this.u(1))
-            }
-            Va(a) {
-                this.i += a;
-                this.v(this.from, this.N, this.u(Math.min(1, this.i / this.o)))
-            }
-            g() {
-                return this.i >= this.o
-            }
-        },
+        constructor(a, b, c) {
+            super();
+            this.o = a;
+            this.from = b;
+            this.N = c;
+            this.i = 0;
+            this.u = Ga
+        }
+        j() {
+            this.o === 0 && this.v(this.from, this.N, this.u(1))
+        }
+        Va(a) {
+            this.i += a;
+            this.v(this.from, this.N, this.u(Math.min(1, this.i / this.o)))
+        }
+        g() {
+            return this.i >= this.o
+        }
+    },
         v = class extends Oa {
             constructor(a, b, c, d) {
                 super(a, b, c);
@@ -495,9 +495,9 @@
             return !1
         }
     };
-    const Ra = Array.prototype.indexOf ? function(a, b) {
+    const Ra = Array.prototype.indexOf ? function (a, b) {
         return Array.prototype.indexOf.call(a, b, void 0)
-    } : function(a, b) {
+    } : function (a, b) {
         if (typeof a === "string") return typeof b !== "string" || b.length != 1 ? -1 : a.indexOf(b, 0);
         for (let c = 0; c < a.length; c++)
             if (c in a && a[c] === b) return c;
@@ -531,7 +531,7 @@
                 createScript: b,
                 createScriptURL: b
             })
-        } catch (b) {}
+        } catch (b) { }
         return a
     }
 
@@ -553,13 +553,13 @@
         return new Xa(b ? b.createScriptURL(a) : a)
     };
     var Za = class {
-            constructor(a) {
-                this.g = a
-            }
-            toString() {
-                return this.g
-            }
-        },
+        constructor(a) {
+            this.g = a
+        }
+        toString() {
+            return this.g
+        }
+    },
         $a = new Za("about:invalid#zClosurez");
     class ab {
         constructor(a) {
@@ -624,7 +624,7 @@
     };
 
     function mb(a) {
-        var b = nb `//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js`;
+        var b = nb`//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js`;
         if (b instanceof Xa) b = b.g;
         else throw Error("d");
         a.src = b;
@@ -716,7 +716,7 @@
         var b;
         a instanceof yb ? (this.u = a.u, zb(this, a.o), this.v = a.v, this.j = a.j, Ab(this, a.N), this.i = a.i, Bb(this, Cb(a.g)), this.H = a.H) : a && (b = String(a).match(wb)) ? (this.u = !1, zb(this, b[1] || "", !0), this.v = Db(b[2] || ""), this.j = Db(b[3] || "", !0), Ab(this, b[4]), this.i = Db(b[5] || "", !0), Bb(this, b[6] || "", !0), this.H = Db(b[7] || "")) : (this.u = !1, this.g = new Eb(null, this.u))
     }
-    yb.prototype.toString = function() {
+    yb.prototype.toString = function () {
         var a = [],
             b = this.o;
         b && a.push(Fb(b, Gb, !0), ":");
@@ -727,7 +727,7 @@
         (c = this.H) && a.push("#", Fb(c, Jb));
         return a.join("")
     };
-    yb.prototype.resolve = function(a) {
+    yb.prototype.resolve = function (a) {
         var b = new yb(this),
             c = !!a.o;
         c ? zb(b, a.o) : c = !!a.v;
@@ -803,12 +803,12 @@
     }
 
     function Nb(a) {
-        a.g || (a.g = new Map, a.i = 0, a.j && xb(a.j, function(b, c) {
+        a.g || (a.g = new Map, a.i = 0, a.j && xb(a.j, function (b, c) {
             a.add(decodeURIComponent(b.replace(/\+/g, " ")), c)
         }))
     }
     k = Eb.prototype;
-    k.add = function(a, b) {
+    k.add = function (a, b) {
         Nb(this);
         this.j = null;
         a = Ob(this, a);
@@ -818,16 +818,16 @@
         this.i += 1;
         return this
     };
-    k.remove = function(a) {
+    k.remove = function (a) {
         Nb(this);
         a = Ob(this, a);
         return this.g.has(a) ? (this.j = null, this.i -= this.g.get(a).length, this.g.delete(a)) : !1
     };
-    k.clear = function() {
+    k.clear = function () {
         this.g = this.j = null;
         this.i = 0
     };
-    k.Za = function() {
+    k.Za = function () {
         Nb(this);
         return this.i == 0
     };
@@ -837,15 +837,15 @@
         b = Ob(a, b);
         return a.g.has(b)
     }
-    k.forEach = function(a, b) {
+    k.forEach = function (a, b) {
         Nb(this);
-        this.g.forEach(function(c, d) {
-            c.forEach(function(e) {
+        this.g.forEach(function (c, d) {
+            c.forEach(function (e) {
                 a.call(b, e, d, this)
             }, this)
         }, this)
     };
-    k.Qb = function() {
+    k.Qb = function () {
         Nb(this);
         const a = Array.from(this.g.values()),
             b = Array.from(this.g.keys()),
@@ -856,7 +856,7 @@
         }
         return c
     };
-    k.mb = function(a) {
+    k.mb = function (a) {
         Nb(this);
         let b = [];
         if (typeof a === "string") Pb(this, a) && (b = b.concat(this.g.get(Ob(this, a))));
@@ -866,7 +866,7 @@
         }
         return b
     };
-    k.set = function(a, b) {
+    k.set = function (a, b) {
         Nb(this);
         this.j = null;
         a = Ob(this, a);
@@ -875,12 +875,12 @@
         this.i += 1;
         return this
     };
-    k.get = function(a, b) {
+    k.get = function (a, b) {
         if (!a) return b;
         a = this.mb(a);
         return a.length > 0 ? String(a[0]) : b
     };
-    k.toString = function() {
+    k.toString = function () {
         if (this.j) return this.j;
         if (!this.g) return "";
         const a = [],
@@ -912,7 +912,7 @@
     }
 
     function Kb(a, b) {
-        b && !a.o && (Nb(a), a.j = null, a.g.forEach(function(c, d) {
+        b && !a.o && (Nb(a), a.j = null, a.g.forEach(function (c, d) {
             var e = d.toLowerCase();
             if (d != e && (this.remove(d), this.remove(e), c.length > 0)) {
                 this.j = null;
@@ -931,8 +931,8 @@
         }, a));
         a.o = b
     }
-    k.extend = function(a) {
-        for (var b = 0; b < arguments.length; b++) vb(arguments[b], function(c, d) {
+    k.extend = function (a) {
+        for (var b = 0; b < arguments.length; b++) vb(arguments[b], function (c, d) {
             this.add(d, c)
         }, this)
     };
@@ -945,7 +945,7 @@
             b.onreadystatechange = () => {
                 if (b.readyState == 4)
                     if (b.status == 200 && b.responseText) a: {
-                        var e = b.responseText;e.startsWith(")]}'\n") && (e = e.substring(5));
+                        var e = b.responseText; e.startsWith(")]}'\n") && (e = e.substring(5));
                         let f = {};
                         try {
                             f = JSON.parse(e)
@@ -953,14 +953,14 @@
                             d(e);
                             break a
                         }
-                        f.hasOwnProperty("ddllog") && (f = f.ddllog);f.hasOwnProperty("__err__") ? d(f.__err__) : c(f)
+                        f.hasOwnProperty("ddllog") && (f = f.ddllog); f.hasOwnProperty("__err__") ? d(f.__err__) : c(f)
                     }
-                else d(b)
+                    else d(b)
             }
         })
     }
 
-    function Rb(a, b, c = () => {}, d = !1) {
+    function Rb(a, b, c = () => { }, d = !1) {
         d = d ? "//www.google.com" : "";
         d = new yb("ddllog".startsWith("/") ? `${d}${"ddllog"}` : `${d}/async/${"ddllog"}`);
         Bb(d, b);
@@ -993,7 +993,7 @@
             this.o = !1;
             this.u = []
         }
-        i() {}
+        i() { }
         H() {
             this.o = !1;
             this.u = []
@@ -1005,13 +1005,13 @@
         this.H = this.H
     }
     Wb.prototype.o = !1;
-    Wb.prototype.dispose = function() {
+    Wb.prototype.dispose = function () {
         this.o || (this.o = !0, this.hb())
     };
-    Wb.prototype[Symbol.dispose] = function() {
+    Wb.prototype[Symbol.dispose] = function () {
         this.dispose()
     };
-    Wb.prototype.hb = function() {
+    Wb.prototype.hb = function () {
         if (this.H)
             for (; this.H.length;) this.H.shift()()
     };
@@ -1021,22 +1021,22 @@
         this.currentTarget = this.target = b;
         this.defaultPrevented = !1
     }
-    Xb.prototype.preventDefault = function() {
+    Xb.prototype.preventDefault = function () {
         this.defaultPrevented = !0
     };
-    var Yb = function() {
+    var Yb = function () {
         if (!pa.addEventListener || !Object.defineProperty) return !1;
         var a = !1,
             b = Object.defineProperty({}, "passive", {
-                get: function() {
+                get: function () {
                     a = !0
                 }
             });
         try {
-            const c = () => {};
+            const c = () => { };
             pa.addEventListener("test", c, b);
             pa.removeEventListener("test", c, b)
-        } catch (c) {}
+        } catch (c) { }
         return a
     }();
     var Zb, $b;
@@ -1064,7 +1064,7 @@
         var b;
         a: {
             if (b = pa.navigator)
-                if (b = b.userAgent) break a;b = ""
+                if (b = b.userAgent) break a; b = ""
         }
         return b.indexOf(a) != -1
     };
@@ -1115,7 +1115,7 @@
         }
     }
     wa(lc, Xb);
-    lc.prototype.preventDefault = function() {
+    lc.prototype.preventDefault = function () {
         lc.ub.preventDefault.call(this);
         var a = this.rb;
         a.preventDefault ? a.preventDefault() : a.returnValue = !1
@@ -1151,7 +1151,7 @@
         this.g = {};
         this.i = 0
     }
-    rc.prototype.add = function(a, b, c, d, e) {
+    rc.prototype.add = function (a, b, c, d, e) {
         var f = a.toString();
         a = this.g[f];
         a || (a = this.g[f] = [], this.i++);
@@ -1159,7 +1159,7 @@
         g > -1 ? (b = a[g], c || (b.Gb = !1)) : (b = new pc(b, this.src, f, !!d, e), b.Gb = c, a.push(b));
         return b
     };
-    rc.prototype.remove = function(a, b, c, d) {
+    rc.prototype.remove = function (a, b, c, d) {
         a = a.toString();
         if (!(a in this.g)) return !1;
         var e = this.g[a];
@@ -1248,7 +1248,7 @@
     function Hc(a, b, c, d, e) {
         if (Array.isArray(b))
             for (var f = 0; f < b.length; f++) Hc(a, b[f], c, d, e);
-        else(d = ra(d) ? !!d.capture : !!d, c = Ac(c), nc(a)) ? a.Sa.remove(String(b), c, d, e) : a && (a = Dc(a)) && (b = a.g[b.toString()], a = -1, b && (a = sc(b, c, d, e)), (c = a > -1 ? b[a] : null) && Ic(c))
+        else (d = ra(d) ? !!d.capture : !!d, c = Ac(c), nc(a)) ? a.Sa.remove(String(b), c, d, e) : a && (a = Dc(a)) && (b = a.g[b.toString()], a = -1, b && (a = sc(b, c, d, e)), (c = a > -1 ? b[a] : null) && Ic(c))
     }
 
     function Ic(a) {
@@ -1287,7 +1287,7 @@
 
     function Ac(a) {
         if (typeof a === "function") return a;
-        a[Jc] || (a[Jc] = function(b) {
+        a[Jc] || (a[Jc] = function (b) {
             return a.handleEvent(b)
         });
         return a[Jc]
@@ -1301,13 +1301,13 @@
     }
     wa(Kc, Wb);
     Kc.prototype[mc] = !0;
-    Kc.prototype.addEventListener = function(a, b, c, d) {
+    Kc.prototype.addEventListener = function (a, b, c, d) {
         yc(this, a, b, c, d)
     };
-    Kc.prototype.removeEventListener = function(a, b, c, d) {
+    Kc.prototype.removeEventListener = function (a, b, c, d) {
         Hc(this, a, b, c, d)
     };
-    Kc.prototype.dispatchEvent = function(a) {
+    Kc.prototype.dispatchEvent = function (a) {
         var b, c = this.ta;
         if (c)
             for (b = []; c; c = c.ta) b.push(c);
@@ -1333,7 +1333,7 @@
             for (f = 0; f < b.length; f++) g = a.currentTarget = b[f], e = Lc(g, d, !1, a) && e;
         return e
     };
-    Kc.prototype.hb = function() {
+    Kc.prototype.hb = function () {
         Kc.ub.hb.call(this);
         this.Sa && uc(this.Sa);
         this.ta = null
@@ -1359,16 +1359,16 @@
         return e && !d.defaultPrevented
     };
 
-    function Mc() {}
+    function Mc() { }
     Mc.prototype.g = null;
-    Mc.prototype.getOptions = function() {
+    Mc.prototype.getOptions = function () {
         var a;
         (a = this.g) || (a = this.g = {});
         return a
     };
     var Nc;
 
-    function Oc() {}
+    function Oc() { }
     wa(Oc, Mc);
     Nc = new Oc;
 
@@ -1428,17 +1428,17 @@
         a.N || (a.N = !0, a.dispatchEvent("complete"), a.dispatchEvent("error"))
     }
     k = Pc.prototype;
-    k.abort = function() {
+    k.abort = function () {
         this.g && this.i && (this.i = !1, this.j = !0, this.g.abort(), this.j = !1, this.dispatchEvent("complete"), this.dispatchEvent("abort"), Wc(this))
     };
-    k.hb = function() {
+    k.hb = function () {
         this.g && (this.i && (this.i = !1, this.j = !0, this.g.abort(), this.j = !1), Wc(this, !0));
         Pc.ub.hb.call(this)
     };
-    k.Jc = function() {
+    k.Jc = function () {
         this.o || (this.O || this.u || this.j ? Xc(this) : this.Fe())
     };
-    k.Fe = function() {
+    k.Fe = function () {
         Xc(this)
     };
 
@@ -1446,57 +1446,57 @@
         if (a.i && typeof oa != "undefined" && (!a.v[1] || (a.g ? a.g.readyState : 0) != 4 || Yc(a) != 2))
             if (a.u && (a.g ? a.g.readyState : 0) == 4) setTimeout(a.Jc.bind(a), 0);
             else if (a.dispatchEvent("readystatechange"), (a.g ? a.g.readyState : 0) == 4) {
-            a.i = !1;
-            try {
-                const f = Yc(a);
-                a: switch (f) {
-                    case 200:
-                    case 201:
-                    case 202:
-                    case 204:
-                    case 206:
-                    case 304:
-                    case 1223:
-                        var b = !0;
-                        break a;
-                    default:
-                        b = !1
-                }
-                var c;
-                if (!(c = b)) {
-                    var d;
-                    if (d = f === 0) {
-                        var e = String(a.ka).match(wb)[1] || null;
-                        !e && pa.self && pa.self.location && (e = pa.self.location.protocol.slice(0, -1));
-                        d = !Qc.test(e ? e.toLowerCase() : "")
+                a.i = !1;
+                try {
+                    const f = Yc(a);
+                    a: switch (f) {
+                        case 200:
+                        case 201:
+                        case 202:
+                        case 204:
+                        case 206:
+                        case 304:
+                        case 1223:
+                            var b = !0;
+                            break a;
+                        default:
+                            b = !1
                     }
-                    c = d
+                    var c;
+                    if (!(c = b)) {
+                        var d;
+                        if (d = f === 0) {
+                            var e = String(a.ka).match(wb)[1] || null;
+                            !e && pa.self && pa.self.location && (e = pa.self.location.protocol.slice(0, -1));
+                            d = !Qc.test(e ? e.toLowerCase() : "")
+                        }
+                        c = d
+                    }
+                    c ? (a.dispatchEvent("complete"), a.dispatchEvent("success")) : Vc(a)
+                } finally {
+                    Wc(a)
                 }
-                c ? (a.dispatchEvent("complete"), a.dispatchEvent("success")) : Vc(a)
-            } finally {
-                Wc(a)
             }
-        }
     }
 
     function Wc(a, b) {
         if (a.g) {
             Uc(a);
             const c = a.g,
-                d = a.v[0] ? () => {} : null;
+                d = a.v[0] ? () => { } : null;
             a.g = null;
             a.v = null;
             b || a.dispatchEvent("ready");
             try {
                 c.onreadystatechange = d
-            } catch (e) {}
+            } catch (e) { }
         }
     }
 
     function Uc(a) {
         a.Ca && (clearTimeout(a.Ca), a.Ca = null)
     }
-    k.isActive = function() {
+    k.isActive = function () {
         return !!this.g
     };
 
@@ -1522,7 +1522,7 @@
     function bd(a) {
         var b = cd;
         if (dd && !b.g) {
-            b.g = new(window.AudioContext || window.webkitAudioContext);
+            b.g = new (window.AudioContext || window.webkitAudioContext);
             b.j = b.g.createGain();
             b.j.connect(b.g.destination);
             for (let c in b.u) b.u[c].g = b.g;
@@ -1597,7 +1597,7 @@
             if (a.j[b]) {
                 try {
                     a.j[b].node.stop(0)
-                } catch (d) {}
+                } catch (d) { }
                 var c = (a.g.currentTime * 1E3 - a.j[b].Kc) % a.u;
                 delete a.j[b];
                 return [c]
@@ -1683,7 +1683,7 @@
             if (b !== void 0) {
                 if (this.j[b]) try {
                     this.j[b].node.playbackRate.value = a
-                } catch (c) {}
+                } catch (c) { }
             } else
                 for (let c in this.j) this.setPlaybackRate(a, c)
         }
@@ -1727,7 +1727,7 @@
             f && b in f && f.setProperty(b, String(e))
         }
     };
-    var wd = a => m(function*() {
+    var wd = a => m(function* () {
         const b = typeof a === "string" ? a : a.value;
         var c;
         if (!(c = yield td(b)))
@@ -1745,7 +1745,7 @@
                 h.addRange(g);
                 try {
                     c.select(), c.setSelectionRange(0, c.value.length)
-                } catch (l) {}
+                } catch (l) { }
                 c.contentEditable = e;
                 c.readOnly = f;
                 try {
@@ -1760,10 +1760,10 @@
             } else c = !1;
         return c || (yield vd()) && (yield td(b)) ? Promise.resolve() : Promise.reject()
     });
-    const td = a => m(function*() {
-            return navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(a).then(() => !0, () => !1) : !1
-        }),
-        xd = a => m(function*() {
+    const td = a => m(function* () {
+        return navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(a).then(() => !0, () => !1) : !1
+    }),
+        xd = a => m(function* () {
             switch (a.state) {
                 case "granted":
                     return !0;
@@ -1774,7 +1774,7 @@
                 a.onchange = () => b(xd(a))
             })
         }),
-        vd = () => m(function*() {
+        vd = () => m(function* () {
             return navigator.permissions && navigator.permissions.query ? xd(yield navigator.permissions.query({
                 name: "clipboard-write"
             })) : !1
@@ -2024,7 +2024,7 @@
     };
 
     function be(a) {
-        return m(function*() {
+        return m(function* () {
             return new Promise(b => {
                 setTimeout(() => {
                     b(void 0)
@@ -2044,7 +2044,7 @@
     }
 
     function de(a) {
-        return m(function*() {
+        return m(function* () {
             a.N && (yield fe(a));
             return a.v()
         })
@@ -2055,7 +2055,7 @@
     }
 
     function fe(a) {
-        return m(function*() {
+        return m(function* () {
             if (a.u) return a.u;
             a.Ia.classList.remove(a.g.zc);
             a.u = be(500);
@@ -2140,9 +2140,9 @@
         return ue(se("shortlink", null) || "//www.google.com/?doodle=" + a)
     }
     var we = () => {
-            const a = se("doodle_args", {}).is_dogfood;
-            return a != null ? a : !1
-        },
+        const a = se("doodle_args", {}).is_dogfood;
+        return a != null ? a : !1
+    },
         xe = se("hl", "en"),
         ye = se("gl", ""),
         ze = RegExp("^(ar|ckb|dv|he|iw|fa|nqo|ps|sd|ug|ur|yi|.*[-_](Adlm|Arab|Hebr|Nkoo|Rohg|Thaa))(?!.*[-_](Latn|Cyrl)($|-|_))($|-|_)", "i").test(xe);
@@ -2150,9 +2150,9 @@
         Be = null,
         Ce = null;
     var De = () => {
-            Ce || (window.google && window.google.kEI && window.google.kEI.length ? Ce = window.google.kEI : Qd() && Pb(z.url.g, "ei") && (Ce = z.url.g.get("ei")));
-            return Ce
-        },
+        Ce || (window.google && window.google.kEI && window.google.kEI.length ? Ce = window.google.kEI : Qd() && Pb(z.url.g, "ei") && (Ce = z.url.g.get("ei")));
+        return Ce
+    },
         Ee = () => {
             if (!Ae) {
                 const a = document.getElementById("hplogoved");
@@ -2160,7 +2160,7 @@
             }
             return Ae
         },
-        Fe = a => `${"/"}${"/".endsWith("/")?"":"/"}${a}`;
+        Fe = a => `${"/"}${"/".endsWith("/") ? "" : "/"}${a}`;
     const Ge = Hd() && z.g.includes("OS 12_");
 
     function He(a, b, c) {
@@ -2184,7 +2184,7 @@
             if (Qd()) throw Error("d");
             var f = Wd() && Kd() && (Kd() && !Gd() || Ld() && !Kd() || Nd() || Pd() || Md()) && !Jd() && !Gd() && a.i.orientation === "landscape-primary" ? b < e !== c < d : !1;
             var g = (a.i.Lb =
-                    f) ? Math.min(c / e, d / b) : Math.min(c / b, d / e),
+                f) ? Math.min(c / e, d / b) : Math.min(c / b, d / e),
                 h = g * b,
                 l = g * e;
             a.i.scale = g;
@@ -2199,7 +2199,7 @@
             sd(a.g, ["position", "absolute"], ["width", `${b}px`], ["height", `${e}px`], ["left", `${h}px`], ["top", `${x}px`]);
             Ge && a.j && (b = document.documentElement, e = b.getBoundingClientRect(), e.width === c &&
                 e.height === d || sd(b, ["width", `${c}px`], ["height", `${d}px`]));
-            a.j && !z.g.includes("CriOS") && c > 0 && document.body.clientWidth !== c && (document.body.clientWidth < document.body.scrollWidth && (document.body.style.width = `${Math.min(document.body.scrollWidth,c)}px`), document.body.clientWidth > c && (document.body.style.width = `${c}px`));
+            a.j && !z.g.includes("CriOS") && c > 0 && document.body.clientWidth !== c && (document.body.clientWidth < document.body.scrollWidth && (document.body.style.width = `${Math.min(document.body.scrollWidth, c)}px`), document.body.clientWidth > c && (document.body.style.width = `${c}px`));
             a.j && sd(a.oa, ["height", "100%"], ["width", "100%"]);
             a.u = c;
             a.o = d;
@@ -2224,7 +2224,7 @@
             this.g.dataset.height = b.toString()
         }
     };
-    var A = class {};
+    var A = class { };
 
     function Ke(a, b) {
         const c = b.constructor;
@@ -2277,11 +2277,11 @@
         return b
     };
     var Oe = class extends A {
-            constructor(a) {
-                super();
-                this.g = a
-            }
-        },
+        constructor(a) {
+            super();
+            this.g = a
+        }
+    },
         Pe = class extends A {
             constructor(a = []) {
                 super();
@@ -2390,38 +2390,38 @@
         return a
     }
     var D = class {
-            constructor(a = 0, b = 0) {
-                this.x = a;
-                this.y = b
-            }
-            set(a, b) {
-                this.x = a;
-                this.y = b;
-                return this
-            }
-            add(a) {
-                this.x += a.x;
-                this.y += a.y;
-                return this
-            }
-            sub(a) {
-                this.x -= a.x;
-                this.y -= a.y;
-                return this
-            }
-            length() {
-                return Math.sqrt(this.x * this.x + this.y * this.y)
-            }
-            transform(a) {
-                const b = a.b * this.x + a.d * this.y + a.f;
-                this.x = a.a * this.x + a.c * this.y + a.e;
-                this.y = b;
-                return this
-            }
-            V() {
-                return new D(this.x, this.y)
-            }
-        },
+        constructor(a = 0, b = 0) {
+            this.x = a;
+            this.y = b
+        }
+        set(a, b) {
+            this.x = a;
+            this.y = b;
+            return this
+        }
+        add(a) {
+            this.x += a.x;
+            this.y += a.y;
+            return this
+        }
+        sub(a) {
+            this.x -= a.x;
+            this.y -= a.y;
+            return this
+        }
+        length() {
+            return Math.sqrt(this.x * this.x + this.y * this.y)
+        }
+        transform(a) {
+            const b = a.b * this.x + a.d * this.y + a.f;
+            this.x = a.a * this.x + a.c * this.y + a.e;
+            this.y = b;
+            return this
+        }
+        V() {
+            return new D(this.x, this.y)
+        }
+    },
         cf = class {
             constructor() {
                 this.a = 1;
@@ -2469,7 +2469,7 @@
 
     function ef(a, b = new cf) {
         var c = a;
-        for (df(a.get(E), b);;) {
+        for (df(a.get(E), b); ;) {
             c = c.i.get(Oe);
             if (!c) break;
             c = c.g;
@@ -2492,7 +2492,7 @@
         return b
     }
     const ff = new cf;
-    var gf = class extends A {},
+    var gf = class extends A { },
         F = class extends A {
             constructor(a, b = 0, c = 0, d = new D(0, 0), e) {
                 super();
@@ -2534,21 +2534,21 @@
         }
     }
     var nf = class extends A {
-            constructor(a, b = !0) {
-                super();
-                this.i = a;
-                this.index = this.g = 0;
-                this.loop = !0;
-                this.j = !1;
-                this.offset = new D(0, 0);
-                this.framesPerSecond = 12;
-                this.o = null;
-                this.loop = b
-            }
-            reset() {
-                this.g = this.index = 0
-            }
-        },
+        constructor(a, b = !0) {
+            super();
+            this.i = a;
+            this.index = this.g = 0;
+            this.loop = !0;
+            this.j = !1;
+            this.offset = new D(0, 0);
+            this.framesPerSecond = 12;
+            this.o = null;
+            this.loop = b
+        }
+        reset() {
+            this.g = this.index = 0
+        }
+    },
         sf = class {
             constructor(a) {
                 this.kb = a
@@ -2587,33 +2587,33 @@
         c.rotation = -c.rotation
     }
     var xf = class extends Te {
-            constructor(a, b) {
-                super(a);
-                this.i = b;
-                this.j = new cf;
-                this.o = new cf
-            }
-            update() {
-                const a = this.i;
-                a.save();
-                a.clearRect(0, 0, a.canvas.width, a.canvas.height);
-                wf(this, this.j);
-                var b = this.g.find(F);
-                vf(b);
-                for (const d of b)
-                    if (b = d.get(F), b.alpha !== 0) {
-                        this.i.globalAlpha = b.alpha;
-                        var c = this.j;
-                        this.i.setTransform(c.a, c.b, c.c, c.d, c.e, c.f);
-                        c = ef(d, this.o);
-                        this.i.transform(c.a, c.b, c.c, c.d, c.e, c.f);
-                        this.i.translate(b.offset.x, b.offset.y);
-                        b.kb instanceof kf && (b = b.kb, this.i.drawImage(b.j, b.i.x, b.i.y, b.g.x,
-                            b.g.y, 0, 0, b.g.x, b.g.y))
-                    }
-                a.restore()
-            }
-        },
+        constructor(a, b) {
+            super(a);
+            this.i = b;
+            this.j = new cf;
+            this.o = new cf
+        }
+        update() {
+            const a = this.i;
+            a.save();
+            a.clearRect(0, 0, a.canvas.width, a.canvas.height);
+            wf(this, this.j);
+            var b = this.g.find(F);
+            vf(b);
+            for (const d of b)
+                if (b = d.get(F), b.alpha !== 0) {
+                    this.i.globalAlpha = b.alpha;
+                    var c = this.j;
+                    this.i.setTransform(c.a, c.b, c.c, c.d, c.e, c.f);
+                    c = ef(d, this.o);
+                    this.i.transform(c.a, c.b, c.c, c.d, c.e, c.f);
+                    this.i.translate(b.offset.x, b.offset.y);
+                    b.kb instanceof kf && (b = b.kb, this.i.drawImage(b.j, b.i.x, b.i.y, b.g.x,
+                        b.g.y, 0, 0, b.g.x, b.g.y))
+                }
+            a.restore()
+        }
+    },
         yf = class extends Te {
             update(a) {
                 for (const b of this.g.find(nf)) {
@@ -2731,7 +2731,7 @@
         Df = qe(document, "fullscreenEnabled");
 
     function Ef(a) {
-        a.i && window.screen.orientation && window.screen.orientation.lock && window.screen.orientation.lock(a.i).catch(() => {})
+        a.i && window.screen.orientation && window.screen.orientation.lock && window.screen.orientation.lock(a.i).catch(() => { })
     }
 
     function Ff(a, b) {
@@ -2820,11 +2820,11 @@
             if (a)
                 if (nc(a)) a.Sa && uc(a.Sa);
                 else if (a = Dc(a)) {
-                var b = 0,
-                    c;
-                for (c in a.g)
-                    for (var d = a.g[c].concat(), e = 0; e < d.length; ++e) Ic(d[e]) && ++b
-            }
+                    var b = 0,
+                        c;
+                    for (c in a.g)
+                        for (var d = a.g[c].concat(), e = 0; e < d.length; ++e) Ic(d[e]) && ++b
+                }
         }
     };
 
@@ -2846,16 +2846,16 @@
     }
 
     function Uf(a) {
-        pb(a.g, function(b, c) {
+        pb(a.g, function (b, c) {
             this.g.hasOwnProperty(c) && Ic(b)
         }, a);
         a.g = {}
     }
-    Rf.prototype.hb = function() {
+    Rf.prototype.hb = function () {
         Rf.ub.hb.call(this);
         Uf(this)
     };
-    Rf.prototype.handleEvent = function() {
+    Rf.prototype.handleEvent = function () {
         throw Error("p");
     };
 
@@ -2924,7 +2924,7 @@
             this.Da = b;
             this.Ca = c;
             this.i = !1;
-            this.u = () => {};
+            this.u = () => { };
             this.v = !1;
             this.H = Date.now();
             this.ta = qe(document, "hidden");
@@ -2971,20 +2971,20 @@
     }
 
     function fg(a) {
-        m(function*() {
+        m(function* () {
             a.g && (document.body.classList.remove("ddlLightboxNoScroll"), Ic(a.j), a.oa.classList.remove("lightboxMode"), a.ob.classList.remove("lightboxBackground"), a.ob.classList.remove("lightboxEnabled"), a.g = !1, a.u(), yd(a.wa, !1), Kd() || !z.g.includes("Safari") || z.g.includes("Chrome") || (a.oa.style.display = "none", a.oa.offsetWidth, a.oa.style.display = "block"), yield be(0))
         })
     }
 
     function gg(a) {
-        return m(function*() {
+        return m(function* () {
             a.g || (yield be(0), document.body.classList.add("ddlLightboxNoScroll"), a.oa.classList.add("lightboxMode"), a.ob.classList.add("lightboxBackground"), a.ob.getBoundingClientRect(), a.ob.classList.add("lightboxEnabled"), a.g = !0, a.i(), a.j = yc(document, "keydown", b => {
                 b.keyCode === 27 && fg(a)
             }), yd(a.wa, !0), yield be(500))
         })
     }
     var hg = class {
-        constructor(a, b, c, d, e = () => {}, f = () => {}) {
+        constructor(a, b, c, d, e = () => { }, f = () => { }) {
             this.oa = a;
             this.o = b;
             this.i = e;
@@ -3014,9 +3014,9 @@
         G = {},
         mg = [];
     var H = (a, b, c = !1) => {
-            G[a] = b;
-            c && !mg.includes(a) && mg.push(a)
-        },
+        G[a] = b;
+        c && !mg.includes(a) && mg.push(a)
+    },
         I = a => {
             var b = Date.now();
             G.dt = b - kg;
@@ -3040,16 +3040,16 @@
     var og = ng;
 
     function ng(a, b = !1) {
-        (b = (b = b && !Jd()) || Od()) ? kb(a): (b = window.top.location, a = db(a, cb) || $a, a = fb(a), a !== void 0 && b.assign(a))
+        (b = (b = b && !Jd()) || Od()) ? kb(a) : (b = window.top.location, a = db(a, cb) || $a, a = fb(a), a !== void 0 && b.assign(a))
     };
     var pg = a => {
-            if (Hd() && (Pd() || Md()))
-                for (const b of a) yc(b, "touchmove", c => {
-                    c.scale !== 1 && c.preventDefault()
-                }, {
-                    passive: !1
-                })
-        },
+        if (Hd() && (Pd() || Md()))
+            for (const b of a) yc(b, "touchmove", c => {
+                c.scale !== 1 && c.preventDefault()
+            }, {
+                passive: !1
+            })
+    },
         qg = a => {
             for (const b of a) yc(b, "contextmenu", c => {
                 c.preventDefault()
@@ -3060,7 +3060,7 @@
     let rg = null;
 
     function sg(a) {
-        m(function*() {
+        m(function* () {
             if (a.doodle && z.url.g.get("ddllb") === "1") {
                 var b = a.j;
                 b.j !== void 0 && b.j !== null && Ic(b.j);
@@ -3070,7 +3070,7 @@
     }
 
     function tg(a) {
-        return m(function*() {
+        return m(function* () {
             if (Rd()) {
                 var b = a.g.Bc,
                     c = new yb("/");
@@ -3119,7 +3119,7 @@
     }
 
     function ug(a) {
-        return m(function*() {
+        return m(function* () {
             if (a.v) return Ag(a);
             wg(a, !0);
             zf(a.u)
@@ -3127,7 +3127,7 @@
     }
 
     function Ag(a) {
-        return m(function*() {
+        return m(function* () {
             a.H = new hg(a.oa, a.W, a.g.width, a.g.height, () => {
                 Ie(a.o, !0);
                 zf(a.u)
@@ -3144,7 +3144,7 @@
     }
 
     function Bg(a) {
-        return m(function*() {
+        return m(function* () {
             var b = a.j;
             b.ab !== 0 && b.Ia.classList.add(b.g.oc);
             b = a.Da;
@@ -3160,7 +3160,7 @@
     }
 
     function Cg(a) {
-        return m(function*() {
+        return m(function* () {
             let b;
             (b = a.H) != null && b.g || (yield Bg(a), a.resume())
         })
@@ -3197,7 +3197,7 @@
                 e.g.isFullscreen = !!document[Cf]
             });
             this.wa.wa.classList.add("closeFullscreenBtn");
-            this.j = new ge(this.i, this.g.Wa.Je, this.g.Wa.Vd, () => {}, () => tg(this), this.g.Wa.Se !== !1 && !this.v && !Rd());
+            this.j = new ge(this.i, this.g.Wa.Je, this.g.Wa.Vd, () => { }, () => tg(this), this.g.Wa.Se !== !1 && !this.v && !Rd());
             this.Da = new Eg(this.i.W, this.j.g.Zb, this.g.Wa.ab);
             this.O = new $d(e => {
                 this.update(e)
@@ -3289,10 +3289,10 @@
     function Hg() {
         this.g = pa.document || document
     }
-    Hg.prototype.appendChild = function(a, b) {
+    Hg.prototype.appendChild = function (a, b) {
         a.appendChild(b)
     };
-    Hg.prototype.contains = function(a, b) {
+    Hg.prototype.contains = function (a, b) {
         if (!a || !b) return !1;
         if (a.contains && b.nodeType == 1) return a == b || a.contains(b);
         if (typeof a.compareDocumentPosition != "undefined") return a == b || !!(a.compareDocumentPosition(b) & 16);
@@ -3305,15 +3305,13 @@
                 Promise.all([
                     document.fonts.load('normal normal 1em Nebulove')
                 ])
-                .then(() => {
-                    resolve();
-                })
-                .catch(err => {
-                    console.warn('字体加载失败，使用后备字体:', err);
-                    resolve();
-                });
-                
-                // 设置超时保护
+                    .then(() => {
+                        resolve();
+                    })
+                    .catch(err => {
+                        console.warn('字体加载失败，使用后备字体:', err);
+                        resolve();
+                    });
                 setTimeout(() => {
                     resolve();
                 }, 5000);
@@ -3322,12 +3320,12 @@
             }
         });
     };
-        Ig = a => {
-            a = a.toLowerCase().replace(/ /g, "");
-            const b = document.documentElement.classList;
-            for (const c of b.values())
-                if (c.search(`wf-${a}-w+-active`)) break
-        };
+    var Ig = a => {
+        a = a.toLowerCase().replace(/ /g, "");
+        const b = document.documentElement.classList;
+        for (const c of b.values())
+            if (c.search(`wf-${a}-w+-active`)) break
+    };
     class Kg extends Vb {
         constructor(a) {
             super(a);
@@ -3432,17 +3430,17 @@
         var c, d, e;
         if (d = c = (d = jh) == null ? void 0 : (e = d.get(b)) == null ? void 0 : e.get(a)) {
             a: if (a.length !== c.length) c = !1;
-                else {
-                    for (const f in c) {
-                        e = Number(f);
-                        if (d = Number.isInteger(e)) d = a[e], e = c[e], d = !(Number.isNaN(d) ? Number.isNaN(e) : d === e);
-                        if (d) {
-                            c = !1;
-                            break a
-                        }
+            else {
+                for (const f in c) {
+                    e = Number(f);
+                    if (d = Number.isInteger(e)) d = a[e], e = c[e], d = !(Number.isNaN(d) ? Number.isNaN(e) : d === e);
+                    if (d) {
+                        c = !1;
+                        break a
                     }
-                    c = !0
-                }d = !c
+                }
+                c = !0
+            } d = !c
         }
         if (d) {
             kh();
@@ -3470,50 +3468,50 @@
                     if (Array.isArray(a)) {
                         if (fh(a)) return
                     } else if (Ng && a != null && a instanceof Uint8Array) {
-                    if (Og) {
-                        for (var b = "", c = 0, d = a.length - 10240; c < d;) b += String.fromCharCode.apply(null, a.subarray(c, c += 10240));
-                        b += String.fromCharCode.apply(null, c ? a.subarray(c) : a);
-                        a = btoa(b)
-                    } else {
-                        b === void 0 && (b = 0);
-                        if (!Mg) {
-                            Mg = {};
-                            c = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split("");
-                            d = ["+/=", "+/", "-_=", "-_.", "-_"];
-                            for (var e = 0; e < 5; e++) {
-                                var f = c.concat(d[e].split(""));
-                                Lg[e] = f;
-                                for (var g = 0; g < f.length; g++) {
-                                    var h = f[g];
-                                    Mg[h] === void 0 && (Mg[h] = g)
+                        if (Og) {
+                            for (var b = "", c = 0, d = a.length - 10240; c < d;) b += String.fromCharCode.apply(null, a.subarray(c, c += 10240));
+                            b += String.fromCharCode.apply(null, c ? a.subarray(c) : a);
+                            a = btoa(b)
+                        } else {
+                            b === void 0 && (b = 0);
+                            if (!Mg) {
+                                Mg = {};
+                                c = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split("");
+                                d = ["+/=", "+/", "-_=", "-_.", "-_"];
+                                for (var e = 0; e < 5; e++) {
+                                    var f = c.concat(d[e].split(""));
+                                    Lg[e] = f;
+                                    for (var g = 0; g < f.length; g++) {
+                                        var h = f[g];
+                                        Mg[h] === void 0 && (Mg[h] = g)
+                                    }
                                 }
                             }
+                            b = Lg[b];
+                            c = Array(Math.floor(a.length / 3));
+                            d = b[64] || "";
+                            for (e = f = 0; f < a.length - 2; f += 3) {
+                                var l = a[f],
+                                    p = a[f + 1];
+                                h = a[f + 2];
+                                g = b[l >> 2];
+                                l = b[(l & 3) << 4 | p >> 4];
+                                p = b[(p & 15) << 2 | h >> 6];
+                                h = b[h & 63];
+                                c[e++] = g + l + p + h
+                            }
+                            g = 0;
+                            h = d;
+                            switch (a.length - f) {
+                                case 2:
+                                    g = a[f + 1], h = b[(g & 15) << 2] || d;
+                                case 1:
+                                    a = a[f], c[e] = b[a >> 2] + b[(a & 3) << 4 | g >> 4] + h + d
+                            }
+                            a = c.join("")
                         }
-                        b = Lg[b];
-                        c = Array(Math.floor(a.length / 3));
-                        d = b[64] || "";
-                        for (e = f = 0; f < a.length - 2; f += 3) {
-                            var l = a[f],
-                                p = a[f + 1];
-                            h = a[f + 2];
-                            g = b[l >> 2];
-                            l = b[(l & 3) << 4 | p >> 4];
-                            p = b[(p & 15) << 2 | h >> 6];
-                            h = b[h & 63];
-                            c[e++] = g + l + p + h
-                        }
-                        g = 0;
-                        h = d;
-                        switch (a.length - f) {
-                            case 2:
-                                g = a[f + 1], h = b[(g & 15) << 2] || d;
-                            case 1:
-                                a = a[f], c[e] = b[a >> 2] + b[(a & 3) << 4 | g >> 4] + h + d
-                        }
-                        a = c.join("")
+                        return a
                     }
-                    return a
-                }
         }
         return a
     };
@@ -3579,7 +3577,7 @@
     var vh = class {
         constructor(a) {
             a: {
-                a == null && (a = mh);mh = void 0;
+                a == null && (a = mh); mh = void 0;
                 if (a == null) {
                     var b = 96;
                     a = []
@@ -3640,7 +3638,7 @@
         }
     };
     vh.prototype.Ic = bh;
-    vh.prototype.toString = function() {
+    vh.prototype.toString = function () {
         try {
             return th = !0, uh(this).toString()
         } finally {
@@ -3676,9 +3674,9 @@
                                 let Q;
                                 ((Q = h) != null ? Q : h = {})[x] = g[x]
                             } else if (f = g[x], Array.isArray(f) && (fh(f) || dh(f) && f.size === 0) && (f = null), f == null && (l = !0), f != null) {
-                        let Q;
-                        ((Q = h) != null ? Q : h = {})[x] = f
-                    }
+                                let Q;
+                                ((Q = h) != null ? Q : h = {})[x] = f
+                            }
                     l || (h = g);
                     if (h)
                         for (let x in h) {
@@ -3703,7 +3701,7 @@
         } else p = a;
         return p
     };
-    var wh = class extends vh {};
+    var wh = class extends vh { };
     var yh = () => {
         return Promise.resolve();
     };
@@ -3715,21 +3713,21 @@
         return c === !1 ? new D((a.pageX - b.x) / (b.width / 540), (a.pageY - b.y) / (b.height / 960)) : c ? new D((b.height - a.pageY + b.y) / (b.height / 540), (a.pageX - b.x) / (b.width / 960)) : new D((a.pageY - b.y) / (b.height / 540), (b.width - a.pageX + b.x) / (b.width / 960))
     };
     var Bh = (a, b, c) => {
-            if (!Ah) return b;
-            let d;
-            try {
-                d = window.localStorage.getItem(a)
-            } catch (e) {
-                return b
-            }
-            if (d == null) return b;
-            a = JSON.parse(d);
-            return c && !c(a) ? b : a
-        },
+        if (!Ah) return b;
+        let d;
+        try {
+            d = window.localStorage.getItem(a)
+        } catch (e) {
+            return b
+        }
+        if (d == null) return b;
+        a = JSON.parse(d);
+        return c && !c(a) ? b : a
+    },
         Ch = (a, b) => {
             if (Ah) try {
                 window.localStorage.setItem(a, JSON.stringify(b))
-            } catch (c) {}
+            } catch (c) { }
         },
         Ah = !!self.localStorage;
     var Dh = {
@@ -3987,10 +3985,10 @@
         throw Error("z");
     }
     Lh.prototype.Ec = null;
-    Lh.prototype.toString = function() {
+    Lh.prototype.toString = function () {
         return this.Nb
     };
-    Lh.prototype.Mc = function() {
+    Lh.prototype.Mc = function () {
         if (this.Hb !== Jh) throw Error("A");
         return hb(this.toString())
     };
@@ -4016,12 +4014,12 @@
     function K(a) {
         return a != null && a.Hb === Jh ? a : a instanceof gb ? L(ib(a).toString()) : L(String(String(a)).replace(Oh, Ph), Nh(a))
     }
-    var L = function(a) {
+    var L = function (a) {
         function b(c) {
             this.Nb = c
         }
         b.prototype = a.prototype;
-        return function(c, d) {
+        return function (c, d) {
             c = new b(String(c));
             d !== void 0 && (c.Ec = d);
             return c
@@ -4269,8 +4267,8 @@
             '<div class="' + M("ddl-modal-share-link") + '">' + K(h) + '</div></button><div class="' + M("ddl-modal-help-text") + '" aria-hidden="true">' + K(l) + '</div></div></div><div class="' + M("ddl-modal-snack-bar") + '" role="alert">' + K(a) + "</div></div></div>")
     };
     var mi = (a, b) => {
-            we() || (I(9), a = a.indexOf("//") == 0 ? "https:" + a : a, window.location = "http://www.google.com/doodles/_SHARE?description=" + encodeURIComponent(b) + "&url=" + encodeURIComponent(a))
-        },
+        we() || (I(9), a = a.indexOf("//") == 0 ? "https:" + a : a, window.location = "http://www.google.com/doodles/_SHARE?description=" + encodeURIComponent(b) + "&url=" + encodeURIComponent(a))
+    },
         ni = () => window.agsa_ext != null && window.agsa_ext.share != null,
         oi = (a, b) => {
             !we() && ni() && (I(15), window.agsa_ext.share(b + " " + a, null))
@@ -4288,7 +4286,7 @@
             } else Jd() &&
                 !Md() ? mi(a, b) : ni() ? oi(a, b) : c()
         },
-        qi = a => m(function*() {
+        qi = a => m(function* () {
             if (we()) return Promise.reject();
             I(16);
             return wd(a)
@@ -4302,7 +4300,7 @@
     }
 
     function ui(a, b) {
-        m(function*() {
+        m(function* () {
             yield qi(b);
             a.i.focus();
             const c = a.g.querySelector(".ddl-modal-dialog");
@@ -4314,7 +4312,7 @@
         })
     }
     var vi = class {
-        constructor(a, b, c, d, e = () => {}, f = () => {}) {
+        constructor(a, b, c, d, e = () => { }, f = () => { }) {
             this.oa = a;
             this.o = e;
             this.j = f;
@@ -4366,7 +4364,7 @@
         }
         close() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 a.g.classList.add("ddl-closing");
                 yield ki(150);
                 a.g.remove();
@@ -4385,23 +4383,23 @@
         return (new Promise(d => {
             c.o ? d() : c.u.push(d);
             c.i()
-        })).then(() => {})
+        })).then(() => { })
     }
 
     function xi(a) {
         var b = qf();
-        return Promise.all(a.map(c => wi(b, c))).then(() => {})
+        return Promise.all(a.map(c => wi(b, c))).then(() => { })
     }
 
     function yi(a, b, c = 1) {
         const d = b[5] || 1;
         a = a.i[lf(b)];
-        return `${c*a[0]/d}px ${c*a[1]/d}px`
+        return `${c * a[0] / d}px ${c * a[1] / d}px`
     }
 
     function zi(a, b) {
         const c = b[5] || 1;
-        return `url(${a.g[lf(b)].j}) ${`${-(1*b[1]/c)}px ${-(1*b[2]/c)}px`}/${yi(a,b,1)} no-repeat`
+        return `url(${a.g[lf(b)].j}) ${`${-(1 * b[1] / c)}px ${-(1 * b[2] / c)}px`}/${yi(a, b, 1)} no-repeat`
     }
     var Bi = class {
         constructor() {
@@ -4450,7 +4448,7 @@
         }
         load(a) {
             if (!this.O) {
-                let b = () => {};
+                let b = () => { };
                 this.O = new Promise(f => {
                     b = f
                 });
@@ -4548,7 +4546,7 @@
         b = new a;
         return a.nb = b
     };
-    var Di = class extends Bi {},
+    var Di = class extends Bi { },
         Ai = [{
             filename: "main-sprite.png",
             size: [140, 140]
@@ -4996,7 +4994,7 @@
         ];
 
     function O(a, b) {
-        return m(function*() {
+        return m(function* () {
             const c = If(),
                 d = a.then(() => void c.resolve());
             We(b, d);
@@ -5005,7 +5003,7 @@
     }
 
     function P(a, b) {
-        return m(function*() {
+        return m(function* () {
             return O(new r(a), b)
         })
     };
@@ -5039,7 +5037,7 @@
     }
 
     function bj(a, b, c = 500) {
-        return m(function*() {
+        return m(function* () {
             const d = Number(window.getComputedStyle(a).opacity) || 0;
             yield O(new v(c * d, d, 0, e => {
                 a.style.opacity = `${e}`
@@ -5093,12 +5091,12 @@
             a.x, a.x + d.x, f => {
                 e.setAttribute("cx", `${f}`)
             }), c), u(new v(3E3, a.y, a.y + d.y, f => {
-            e.setAttribute("cy", `${f}`)
-        }), c)]), new q(() => {
-            e.remove()
-        })])
+                e.setAttribute("cy", `${f}`)
+            }), c)]), new q(() => {
+                e.remove()
+            })])
     };
-    class fj extends hd {}
+    class fj extends hd { }
     var id = {};
     id.Xb = new rd;
     var w = {};
@@ -5165,10 +5163,10 @@
     w.Od = new y(338976.1875, 5490.3330078125);
     w.Pd = new y(345466.53125, 4926.60400390625);
     w.Qd = new y(351393.125, 2494.22900390625);
-    (function() {
+    (function () {
         var a = fj;
         a.nb = void 0;
-        a.Hc = function() {
+        a.Hc = function () {
             return a.nb ? a.nb : a.nb = new a
         }
     })();
@@ -5194,7 +5192,7 @@
     }
 
     function S(a, b, c = 0) {
-        m(function*() {
+        m(function* () {
             const d = b.play(c);
             yield P(b.u + c, a.actions);
             jd(b, `${d}`)
@@ -5202,7 +5200,7 @@
     }
 
     function qj(a, b, c, d = 0) {
-        m(function*() {
+        m(function* () {
             if (a.g !== void 0) {
                 const e = a.g;
                 c !== void 0 && (od(e, .01, c / 1E3), yield P(c, a.actions));
@@ -5215,7 +5213,7 @@
     }
 
     function rj(a, b) {
-        m(function*() {
+        m(function* () {
             if (a.g !== void 0) {
                 var c = a.g;
                 a.g = void 0;
@@ -5225,28 +5223,28 @@
         })
     }
     var oj = class {
-            constructor() {
-                this.i = new Se;
-                this.actions = new B;
-                C(this.i, this.actions);
-                this.i.g = [new Xe(this.i)]
-            }
-            update(a) {
-                this.i.update(a)
-            }
-        },
+        constructor() {
+            this.i = new Se;
+            this.actions = new B;
+            C(this.i, this.actions);
+            this.i.g = [new Xe(this.i)]
+        }
+        update(a) {
+            this.i.update(a)
+        }
+    },
         nj = void 0;
     var sj = "en af sq am ar hy az eu be bn bs bg my ca zh-HK zh-CN zh-TW hr cs da nl en-GB et fa fil fi fr fr-CA gl ka de el gu iw hi hu is id it ja kn kk km ko ky lo lv lt mk ms ml mr mn ne no pl pt-BR pt-PT pa ro ru sr si sk sl es-419 es sw sv ta te th tr uk ur uz vi zu ".split(" ");
     var T = class extends A {
-            constructor(a, b) {
-                super();
-                this.el = a;
-                a.style.position = "absolute";
-                a.style.left = "0";
-                a.style.top = "0";
-                this.g = !b || b.pos.x === 0 && b.pos.y === 0 ? "" : `translate(${b.pos.x}${b.Ib}, ${b.pos.y}${b.Ib}) `
-            }
-        },
+        constructor(a, b) {
+            super();
+            this.el = a;
+            a.style.position = "absolute";
+            a.style.left = "0";
+            a.style.top = "0";
+            this.g = !b || b.pos.x === 0 && b.pos.y === 0 ? "" : `translate(${b.pos.x}${b.Ib}, ${b.pos.y}${b.Ib}) `
+        }
+    },
         tj = class extends Te {
             update() {
                 var a = Ue(this.g.find(gf)),
@@ -5282,7 +5280,7 @@
         };
 
     function uj(a, b, c) {
-        return m(function*() {
+        return m(function* () {
             const d = Zi(a.i, Yi(b)),
                 e = a.i.get(E);
             e.rotation = -vj[c];
@@ -5293,39 +5291,39 @@
     }
 
     function xj(a, b, c) {
-        return m(function*() {
+        return m(function* () {
             var d = a.H;
             d !== b && (a.H = b, yield a.u, d = yj.get(d).get(b), a.u = uj(a, d, c != null ? c : a.position), yield a.u)
         })
     }
 
     function zj(a, b, c, d) {
-        return m(function*() {
+        return m(function* () {
             const e = a.position;
             e !== b && (a.position = b, yield xj(a, 0, e), yield Aj(a, e, b, c), yield xj(a, d, b))
         })
     }
 
     function Bj(a) {
-        return m(function*() {
+        return m(function* () {
             yield zj(a, 0, 2500, 1)
         })
     }
 
     function Cj(a) {
-        return m(function*() {
+        return m(function* () {
             yield zj(a, 2, 2500, 1)
         })
     }
 
     function Dj(a) {
-        return m(function*() {
+        return m(function* () {
             yield zj(a, 1, 1500, 1)
         })
     }
 
     function Aj(a, b, c, d) {
-        return m(function*() {
+        return m(function* () {
             if (b !== c) {
                 var e = a.background.get(E),
                     f = vj[c],
@@ -5447,115 +5445,115 @@
             ])]
         ]);
     var Lj = {
-            new_moon: {
-                type: "moon",
-                id: "new_moon",
-                Ga: [13, 309, 203, 100, 100],
-                Ka: Ei,
-                Ma: [13, 206, 203, 100, 100],
-                La: [13, 103, 203, 100, 100],
-                value: 0
-            },
-            waxing_crescent: {
-                type: "moon",
-                id: "waxing_crescent",
-                Ga: [13, 618, 203, 100, 100],
-                Ka: Ei,
-                Ma: [13, 515, 203, 100, 100],
-                La: [13, 412, 203, 100, 100],
-                value: 1
-            },
-            first_quarter: {
-                type: "moon",
-                id: "first_quarter",
-                Ga: [13, 0, 306, 100, 100],
-                Ka: Ei,
-                Ma: [13, 824, 203, 100, 100],
-                La: [13, 721, 203, 100, 100],
-                value: 2
-            },
-            waxing_gibbous: {
-                type: "moon",
-                id: "waxing_gibbous",
-                Ga: [13, 309, 306, 100, 100],
-                Ka: Ei,
-                Ma: [13, 206, 306, 100, 100],
-                La: [13, 103, 306, 100, 100],
-                value: 3
-            },
-            full_moon: {
-                type: "moon",
-                id: "full_moon",
-                Ga: [13, 618, 306, 100, 100],
-                Ka: Ei,
-                Ma: [13, 515, 306, 100, 100],
-                La: [13, 412, 306, 100, 100],
-                value: 4
-            },
-            waning_gibbous: {
-                type: "moon",
-                id: "waning_gibbous",
-                Ga: [13, 0, 409, 100, 100],
-                Ka: Ei,
-                Ma: [13, 824, 306, 100, 100],
-                La: [13, 721, 306, 100, 100],
-                value: 5
-            },
-            third_quarter: {
-                type: "moon",
-                id: "third_quarter",
-                Ga: [13, 309, 409, 100, 100],
-                Ka: Ei,
-                Ma: [13, 206, 409, 100, 100],
-                La: [13, 103, 409, 100, 100],
-                value: 6
-            },
-            waning_crescent: {
-                type: "moon",
-                id: "waning_crescent",
-                Ga: [13, 618, 409, 100, 100],
-                Ka: Ei,
-                Ma: [13, 515, 409, 100, 100],
-                La: [13, 412, 409, 100, 100],
-                value: 7
-            },
-            wildcard_hunter_moon: {
-                type: "legendary_wildcard",
-                id: "wildcard_hunter_moon",
-                Ga: Ji,
-                Ka: Fi,
-                Ma: Ji,
-                La: Ji,
-                value: -1
-            },
-            wildcard_leonids_meteor: {
-                type: "legendary_wildcard",
-                id: "wildcard_leonids_meteor",
-                Ga: Ki,
-                Ka: Fi,
-                Ma: Ki,
-                La: Ki,
-                value: -1
-            },
-            wildcard_scorpio: {
-                type: "legendary_wildcard",
-                id: "wildcard_scorpio",
-                Ga: Li,
-                Ka: Fi,
-                Ma: Li,
-                La: Li,
-                value: -1
-            },
-            wildcard_super_moon: {
-                type: "legendary_wildcard",
-                id: "wildcard_super_moon",
-                Ga: Mi,
-                Ka: Fi,
-                Ma: Mi,
-                La: Mi,
-                value: -1
-            }
+        new_moon: {
+            type: "moon",
+            id: "new_moon",
+            Ga: [13, 309, 203, 100, 100],
+            Ka: Ei,
+            Ma: [13, 206, 203, 100, 100],
+            La: [13, 103, 203, 100, 100],
+            value: 0
         },
+        waxing_crescent: {
+            type: "moon",
+            id: "waxing_crescent",
+            Ga: [13, 618, 203, 100, 100],
+            Ka: Ei,
+            Ma: [13, 515, 203, 100, 100],
+            La: [13, 412, 203, 100, 100],
+            value: 1
+        },
+        first_quarter: {
+            type: "moon",
+            id: "first_quarter",
+            Ga: [13, 0, 306, 100, 100],
+            Ka: Ei,
+            Ma: [13, 824, 203, 100, 100],
+            La: [13, 721, 203, 100, 100],
+            value: 2
+        },
+        waxing_gibbous: {
+            type: "moon",
+            id: "waxing_gibbous",
+            Ga: [13, 309, 306, 100, 100],
+            Ka: Ei,
+            Ma: [13, 206, 306, 100, 100],
+            La: [13, 103, 306, 100, 100],
+            value: 3
+        },
+        full_moon: {
+            type: "moon",
+            id: "full_moon",
+            Ga: [13, 618, 306, 100, 100],
+            Ka: Ei,
+            Ma: [13, 515, 306, 100, 100],
+            La: [13, 412, 306, 100, 100],
+            value: 4
+        },
+        waning_gibbous: {
+            type: "moon",
+            id: "waning_gibbous",
+            Ga: [13, 0, 409, 100, 100],
+            Ka: Ei,
+            Ma: [13, 824, 306, 100, 100],
+            La: [13, 721, 306, 100, 100],
+            value: 5
+        },
+        third_quarter: {
+            type: "moon",
+            id: "third_quarter",
+            Ga: [13, 309, 409, 100, 100],
+            Ka: Ei,
+            Ma: [13, 206, 409, 100, 100],
+            La: [13, 103, 409, 100, 100],
+            value: 6
+        },
+        waning_crescent: {
+            type: "moon",
+            id: "waning_crescent",
+            Ga: [13, 618, 409, 100, 100],
+            Ka: Ei,
+            Ma: [13, 515, 409, 100, 100],
+            La: [13, 412, 409, 100, 100],
+            value: 7
+        },
+        wildcard_hunter_moon: {
+            type: "legendary_wildcard",
+            id: "wildcard_hunter_moon",
+            Ga: Ji,
+            Ka: Fi,
+            Ma: Ji,
+            La: Ji,
+            value: -1
+        },
+        wildcard_leonids_meteor: {
+            type: "legendary_wildcard",
+            id: "wildcard_leonids_meteor",
+            Ga: Ki,
+            Ka: Fi,
+            Ma: Ki,
+            La: Ki,
+            value: -1
+        },
+        wildcard_scorpio: {
+            type: "legendary_wildcard",
+            id: "wildcard_scorpio",
+            Ga: Li,
+            Ka: Fi,
+            Ma: Li,
+            La: Li,
+            value: -1
+        },
+        wildcard_super_moon: {
+            type: "legendary_wildcard",
+            id: "wildcard_super_moon",
+            Ga: Mi,
+            Ka: Fi,
+            Ma: Mi,
+            La: Mi,
+            value: -1
+        }
+    },
         Mj = {
             wildcard_hunter_moon: {
                 title: "wc_oct_huntermoon_title",
@@ -5590,25 +5588,25 @@
         Rj = Qj ? "Inter" : "Josefin Sans",
         Sj = Qj ? 100 : 200;
     var Tj = class extends A {
-            constructor(a, b) {
-                super();
-                this.Va = a;
-                this.value = b;
-                this.i = !0;
-                this.g = !1
-            }
-            set(a) {
-                this.j = this.value;
-                this.g = !0;
-                this.value = a
-            }
-            get() {
-                return this.value
-            }
-            update(a) {
-                this.g && (this.Va(a, this.value, this.j), this.g = !1, this.j = void 0)
-            }
-        },
+        constructor(a, b) {
+            super();
+            this.Va = a;
+            this.value = b;
+            this.i = !0;
+            this.g = !1
+        }
+        set(a) {
+            this.j = this.value;
+            this.g = !0;
+            this.value = a
+        }
+        get() {
+            return this.value
+        }
+        update(a) {
+            this.g && (this.Va(a, this.value, this.j), this.g = !1, this.j = void 0)
+        }
+    },
         Uj = class extends Te {
             constructor(a, ...b) {
                 super(a);
@@ -5629,13 +5627,13 @@
         return new V(a, b)
     }
     var V = class extends A {
-            constructor(a, b) {
-                super();
-                this.Aa = a;
-                this.g = b;
-                this.Aa.V()
-            }
-        },
+        constructor(a, b) {
+            super();
+            this.Aa = a;
+            this.g = b;
+            this.Aa.V()
+        }
+    },
         Wj = class extends Te {
             update() {
                 for (const a of this.g.find(V, E)) {
@@ -5697,16 +5695,16 @@
         f.appendChild(a)
     }
     var W = class extends A {
-            constructor(a, b) {
-                super();
-                this.id = a;
-                this.definition = b;
-                this.Ya = 0;
-                this.type = b.type;
-                this.value = b.value
-            }
-        },
-        ck = class extends A {};
+        constructor(a, b) {
+            super();
+            this.id = a;
+            this.definition = b;
+            this.Ya = 0;
+            this.type = b.type;
+            this.value = b.value
+        }
+    },
+        ck = class extends A { };
 
     function dk(a, b) {
         const c = a.definition;
@@ -5739,10 +5737,10 @@
         return a
     }
     var gk = class extends Tj {
-            constructor() {
-                super((a, b, c) => void ik(a, b, c), !1)
-            }
-        },
+        constructor() {
+            super((a, b, c) => void ik(a, b, c), !1)
+        }
+    },
         hk = class extends Tj {
             constructor() {
                 super((a, b, c) => void jk(a, b, c), !0)
@@ -5844,7 +5842,7 @@
     }
 
     function qk(a, b, c, d, e = !0, f = !0) {
-        return m(function*() {
+        return m(function* () {
             bk(b, a.j, b.get(W).type === "moon" ? a.cardSize : new D(65, 65), 180, d, a.i);
             const {
                 U: g,
@@ -5858,7 +5856,7 @@
     }
 
     function rk(a, b) {
-        return m(function*() {
+        return m(function* () {
             const {
                 U: c
             } = nk(a, b.get(W).type), d = c.findIndex(e => e === b);
@@ -5867,7 +5865,7 @@
     }
 
     function sk(a, b) {
-        return m(function*() {
+        return m(function* () {
             yield ok(a, a.U, a.Pa, b);
             yield ok(a, a.g, a.Pa + a.cardSize.y + 20, b)
         })
@@ -5894,8 +5892,8 @@
         for (const e of a) a = e.get(V).Aa.x, c.push(new D(d + a / 2, b)), d += a + 15;
         return c
     };
-    var uk = class extends A {},
-        vk = class extends A {};
+    var uk = class extends A { },
+        vk = class extends A { };
 
     function wk(a) {
         return new B(new X("player", 745, new D(640, 745), new D(84, 84), !0, a), new uk)
@@ -5935,12 +5933,12 @@
         }), new Bk)
     }
     var Y = class extends A {
-            constructor(a) {
-                super();
-                this.id = a;
-                this.g = !0
-            }
-        },
+        constructor(a) {
+            super();
+            this.id = a;
+            this.g = !0
+        }
+    },
         Bk = class extends Tj {
             constructor() {
                 super((a, b) => {
@@ -6146,7 +6144,7 @@
                         throw Error("B`" + b);
                 }
             }
-            c.style.opacity = "0";a.Dc.appendChild(c);
+            c.style.opacity = "0"; a.Dc.appendChild(c);
             a.yb = c
         }
         a.type = b
@@ -6212,7 +6210,7 @@
     }
 
     function Tk(a, b) {
-        return m(function*() {
+        return m(function* () {
             for (var c of a.g.tiles) {
                 var d = Ak(c.id, new D(c.pos.x, c.pos.y), a.tileSize.V()),
                     e = d.get(Y);
@@ -6253,7 +6251,7 @@
     }
 
     function Xk(a, b, c, d) {
-        return m(function*() {
+        return m(function* () {
             b.get(Y).T = c;
             c.get(W).ya = b;
             S(R(), w.Gd);
@@ -6289,77 +6287,77 @@
         }
     };
     var $k = {
-            id: "board3x3",
-            tiles: [{
-                id: "0",
-                pos: {
-                    x: 174,
-                    y: 396
-                }
-            }, {
-                id: "1",
-                pos: {
-                    x: 270,
-                    y: 396
-                }
-            }, {
-                id: "2",
-                pos: {
-                    x: 366,
-                    y: 396
-                }
-            }, {
-                id: "3",
-                pos: {
-                    x: 174,
-                    y: 492
-                }
-            }, {
-                id: "4",
-                pos: {
-                    x: 270,
-                    y: 492
-                }
-            }, {
-                id: "5",
-                pos: {
-                    x: 366,
-                    y: 492
-                }
-            }, {
-                id: "6",
-                pos: {
-                    x: 174,
-                    y: 588
-                }
-            }, {
-                id: "7",
-                pos: {
-                    x: 270,
-                    y: 588
-                }
-            }, {
-                id: "8",
-                pos: {
-                    x: 366,
-                    y: 588
-                }
-            }],
-            neighbors: {
-                0: ["1", "3"],
-                1: ["0", "2", "4"],
-                2: ["1", "5"],
-                3: ["0", "4", "6"],
-                4: ["1", "3", "5", "7"],
-                5: ["2", "4", "8"],
-                6: ["3", "7"],
-                7: ["4", "6", "8"],
-                8: ["5", "7"]
-            },
-            cardSize: 74,
-            cardExpandedSize: 84,
-            tileSize: 50
+        id: "board3x3",
+        tiles: [{
+            id: "0",
+            pos: {
+                x: 174,
+                y: 396
+            }
+        }, {
+            id: "1",
+            pos: {
+                x: 270,
+                y: 396
+            }
+        }, {
+            id: "2",
+            pos: {
+                x: 366,
+                y: 396
+            }
+        }, {
+            id: "3",
+            pos: {
+                x: 174,
+                y: 492
+            }
+        }, {
+            id: "4",
+            pos: {
+                x: 270,
+                y: 492
+            }
+        }, {
+            id: "5",
+            pos: {
+                x: 366,
+                y: 492
+            }
+        }, {
+            id: "6",
+            pos: {
+                x: 174,
+                y: 588
+            }
+        }, {
+            id: "7",
+            pos: {
+                x: 270,
+                y: 588
+            }
+        }, {
+            id: "8",
+            pos: {
+                x: 366,
+                y: 588
+            }
+        }],
+        neighbors: {
+            0: ["1", "3"],
+            1: ["0", "2", "4"],
+            2: ["1", "5"],
+            3: ["0", "4", "6"],
+            4: ["1", "3", "5", "7"],
+            5: ["2", "4", "8"],
+            6: ["3", "7"],
+            7: ["4", "6", "8"],
+            8: ["5", "7"]
         },
+        cardSize: 74,
+        cardExpandedSize: 84,
+        tileSize: 50
+    },
         al = [$k, {
             id: "rows3x4",
             tiles: [{
@@ -6453,202 +6451,202 @@
             cardExpandedSize: 84,
             tileSize: 50
         }, {
-            id: "squares",
-            tiles: [{
-                id: "0",
-                pos: {
-                    x: 136,
-                    y: 356
-                }
-            }, {
-                id: "1",
-                pos: {
-                    x: 222,
-                    y: 356
-                }
-            }, {
-                id: "2",
-                pos: {
-                    x: 328,
-                    y: 356
-                }
-            }, {
-                id: "3",
-                pos: {
-                    x: 414,
-                    y: 356
-                }
-            }, {
-                id: "4",
-                pos: {
-                    x: 136,
-                    y: 442
-                }
-            }, {
-                id: "5",
-                pos: {
-                    x: 222,
-                    y: 442
-                }
-            }, {
-                id: "6",
-                pos: {
-                    x: 328,
-                    y: 442
-                }
-            }, {
-                id: "7",
-                pos: {
-                    x: 414,
-                    y: 442
-                }
-            }, {
-                id: "8",
-                pos: {
-                    x: 136,
-                    y: 543
-                }
-            }, {
-                id: "9",
-                pos: {
-                    x: 222,
-                    y: 543
-                }
-            }, {
-                id: "10",
-                pos: {
-                    x: 328,
-                    y: 543
-                }
-            }, {
-                id: "11",
-                pos: {
-                    x: 414,
-                    y: 543
-                }
-            }, {
-                id: "12",
-                pos: {
-                    x: 136,
-                    y: 629
-                }
-            }, {
-                id: "13",
-                pos: {
-                    x: 222,
-                    y: 629
-                }
-            }, {
-                id: "14",
-                pos: {
-                    x: 328,
-                    y: 629
-                }
-            }, {
-                id: "15",
-                pos: {
-                    x: 414,
-                    y: 629
-                }
-            }],
-            neighbors: {
-                0: ["1", "4"],
-                1: ["0", "5"],
-                2: ["3", "6"],
-                3: ["2", "7"],
-                4: ["0", "5"],
-                5: ["4", "1"],
-                6: ["2", "7"],
-                7: ["3", "6"],
-                8: ["9", "12"],
-                9: ["8", "13"],
-                10: ["11", "14"],
-                11: ["10", "15"],
-                12: ["8", "13"],
-                13: ["9", "12"],
-                14: ["10", "15"],
-                15: ["11", "14"]
-            },
-            cardSize: 65,
-            cardExpandedSize: 75,
-            tileSize: 50
-        }],
-        bl = {
-            id: "board3x4",
-            tiles: [{
+                id: "squares",
+                tiles: [{
                     id: "0",
                     pos: {
-                        x: 122,
-                        y: 376
+                        x: 136,
+                        y: 356
                     }
                 }, {
                     id: "1",
                     pos: {
-                        x: 221,
-                        y: 376
+                        x: 222,
+                        y: 356
                     }
                 }, {
                     id: "2",
                     pos: {
-                        x: 320,
-                        y: 376
+                        x: 328,
+                        y: 356
                     }
                 }, {
                     id: "3",
                     pos: {
-                        x: 418,
-                        y: 376
+                        x: 414,
+                        y: 356
                     }
                 }, {
                     id: "4",
                     pos: {
-                        x: 122,
-                        y: 487
+                        x: 136,
+                        y: 442
                     }
                 }, {
                     id: "5",
                     pos: {
-                        x: 221,
-                        y: 487
+                        x: 222,
+                        y: 442
                     }
                 }, {
                     id: "6",
                     pos: {
-                        x: 320,
-                        y: 487
+                        x: 328,
+                        y: 442
                     }
                 }, {
                     id: "7",
                     pos: {
-                        x: 418,
-                        y: 487
+                        x: 414,
+                        y: 442
                     }
                 }, {
                     id: "8",
                     pos: {
-                        x: 122,
-                        y: 598
+                        x: 136,
+                        y: 543
                     }
                 }, {
                     id: "9",
                     pos: {
-                        x: 221,
-                        y: 598
+                        x: 222,
+                        y: 543
                     }
-                },
-                {
+                }, {
                     id: "10",
                     pos: {
-                        x: 320,
-                        y: 598
+                        x: 328,
+                        y: 543
                     }
                 }, {
                     id: "11",
                     pos: {
-                        x: 418,
-                        y: 598
+                        x: 414,
+                        y: 543
                     }
+                }, {
+                    id: "12",
+                    pos: {
+                        x: 136,
+                        y: 629
+                    }
+                }, {
+                    id: "13",
+                    pos: {
+                        x: 222,
+                        y: 629
+                    }
+                }, {
+                    id: "14",
+                    pos: {
+                        x: 328,
+                        y: 629
+                    }
+                }, {
+                    id: "15",
+                    pos: {
+                        x: 414,
+                        y: 629
+                    }
+                }],
+                neighbors: {
+                    0: ["1", "4"],
+                    1: ["0", "5"],
+                    2: ["3", "6"],
+                    3: ["2", "7"],
+                    4: ["0", "5"],
+                    5: ["4", "1"],
+                    6: ["2", "7"],
+                    7: ["3", "6"],
+                    8: ["9", "12"],
+                    9: ["8", "13"],
+                    10: ["11", "14"],
+                    11: ["10", "15"],
+                    12: ["8", "13"],
+                    13: ["9", "12"],
+                    14: ["10", "15"],
+                    15: ["11", "14"]
+                },
+                cardSize: 65,
+                cardExpandedSize: 75,
+                tileSize: 50
+            }],
+        bl = {
+            id: "board3x4",
+            tiles: [{
+                id: "0",
+                pos: {
+                    x: 122,
+                    y: 376
                 }
+            }, {
+                id: "1",
+                pos: {
+                    x: 221,
+                    y: 376
+                }
+            }, {
+                id: "2",
+                pos: {
+                    x: 320,
+                    y: 376
+                }
+            }, {
+                id: "3",
+                pos: {
+                    x: 418,
+                    y: 376
+                }
+            }, {
+                id: "4",
+                pos: {
+                    x: 122,
+                    y: 487
+                }
+            }, {
+                id: "5",
+                pos: {
+                    x: 221,
+                    y: 487
+                }
+            }, {
+                id: "6",
+                pos: {
+                    x: 320,
+                    y: 487
+                }
+            }, {
+                id: "7",
+                pos: {
+                    x: 418,
+                    y: 487
+                }
+            }, {
+                id: "8",
+                pos: {
+                    x: 122,
+                    y: 598
+                }
+            }, {
+                id: "9",
+                pos: {
+                    x: 221,
+                    y: 598
+                }
+            },
+            {
+                id: "10",
+                pos: {
+                    x: 320,
+                    y: 598
+                }
+            }, {
+                id: "11",
+                pos: {
+                    x: 418,
+                    y: 598
+                }
+            }
             ],
             neighbors: {
                 0: ["1", "4"],
@@ -6789,8 +6787,8 @@
             cardExpandedSize: 75,
             tileSize: 50
         }, {
-            id: "rings",
-            tiles: [{
+                id: "rings",
+                tiles: [{
                     id: "0",
                     pos: {
                         x: 136,
@@ -6888,278 +6886,178 @@
                         y: 629
                     }
                 }
-            ],
-            neighbors: {
-                0: ["1", "4"],
-                1: ["0", "2"],
-                2: ["1", "3"],
-                3: ["2", "7"],
-                4: ["0", "8"],
-                5: ["6", "9"],
-                6: ["5", "10"],
-                7: ["3", "11"],
-                8: ["4", "12"],
-                9: ["5", "10"],
-                10: ["6", "9"],
-                11: ["7", "15"],
-                12: ["8", "13"],
-                13: ["12", "14"],
-                14: ["13", "15"],
-                15: ["11", "14"]
-            },
-            cardSize: 65,
-            cardExpandedSize: 75,
-            tileSize: 50
-        }, {
-            id: "connected_rings",
-            tiles: [{
-                id: "0",
-                pos: {
-                    x: 136,
-                    y: 356
-                }
+                ],
+                neighbors: {
+                    0: ["1", "4"],
+                    1: ["0", "2"],
+                    2: ["1", "3"],
+                    3: ["2", "7"],
+                    4: ["0", "8"],
+                    5: ["6", "9"],
+                    6: ["5", "10"],
+                    7: ["3", "11"],
+                    8: ["4", "12"],
+                    9: ["5", "10"],
+                    10: ["6", "9"],
+                    11: ["7", "15"],
+                    12: ["8", "13"],
+                    13: ["12", "14"],
+                    14: ["13", "15"],
+                    15: ["11", "14"]
+                },
+                cardSize: 65,
+                cardExpandedSize: 75,
+                tileSize: 50
             }, {
-                id: "1",
-                pos: {
-                    x: 227,
-                    y: 356
-                }
-            }, {
-                id: "2",
-                pos: {
-                    x: 318,
-                    y: 356
-                }
-            }, {
-                id: "3",
-                pos: {
-                    x: 409,
-                    y: 356
-                }
-            }, {
-                id: "4",
-                pos: {
-                    x: 136,
-                    y: 447
-                }
-            }, {
-                id: "5",
-                pos: {
-                    x: 227,
-                    y: 447
-                }
-            }, {
-                id: "6",
-                pos: {
-                    x: 318,
-                    y: 447
-                }
-            }, {
-                id: "7",
-                pos: {
-                    x: 409,
-                    y: 447
-                }
-            }, {
-                id: "8",
-                pos: {
-                    x: 136,
-                    y: 538
-                }
-            }, {
-                id: "9",
-                pos: {
-                    x: 227,
-                    y: 538
-                }
-            }, {
-                id: "10",
-                pos: {
-                    x: 318,
-                    y: 538
-                }
-            }, {
-                id: "11",
-                pos: {
-                    x: 409,
-                    y: 538
-                }
-            }, {
-                id: "12",
-                pos: {
-                    x: 136,
-                    y: 629
-                }
-            }, {
-                id: "13",
-                pos: {
-                    x: 227,
-                    y: 629
-                }
-            }, {
-                id: "14",
-                pos: {
-                    x: 318,
-                    y: 629
-                }
-            }, {
-                id: "15",
-                pos: {
-                    x: 409,
-                    y: 629
-                }
-            }],
-            neighbors: {
-                0: ["1", "4", "5"],
-                1: ["0", "2"],
-                2: ["1", "3"],
-                3: ["2", "6", "7"],
-                4: ["0", "8"],
-                5: ["0", "6", "9"],
-                6: ["3", "5", "10"],
-                7: ["3", "11"],
-                8: ["4", "12"],
-                9: ["5", "10", "12"],
-                10: ["6", "9", "15"],
-                11: ["7", "15"],
-                12: ["8", "9", "13"],
-                13: ["12", "14"],
-                14: ["13", "15"],
-                15: ["10", "11", "14"]
-            },
-            cardSize: 65,
-            cardExpandedSize: 75,
-            tileSize: 50
-        }, {
-            id: "center_ring",
-            tiles: [{
-                id: "0",
-                pos: {
-                    x: 136,
-                    y: 356
-                }
-            }, {
-                id: "1",
-                pos: {
-                    x: 227,
-                    y: 356
-                }
-            }, {
-                id: "2",
-                pos: {
-                    x: 318,
-                    y: 356
-                }
-            }, {
-                id: "3",
-                pos: {
-                    x: 409,
-                    y: 356
-                }
-            }, {
-                id: "4",
-                pos: {
-                    x: 136,
-                    y: 447
-                }
-            }, {
-                id: "5",
-                pos: {
-                    x: 409,
-                    y: 447
-                }
-            }, {
-                id: "6",
-                pos: {
-                    x: 136,
-                    y: 538
-                }
-            }, {
-                id: "7",
-                pos: {
-                    x: 409,
-                    y: 538
-                }
-            }, {
-                id: "8",
-                pos: {
-                    x: 136,
-                    y: 629
-                }
-            }, {
-                id: "9",
-                pos: {
-                    x: 227,
-                    y: 629
-                }
-            }, {
-                id: "10",
-                pos: {
-                    x: 318,
-                    y: 629
-                }
-            }, {
-                id: "11",
-                pos: {
-                    x: 409,
-                    y: 629
-                }
-            }, {
-                id: "12",
-                pos: {
-                    x: 272,
-                    y: 493
-                }
-            }],
-            neighbors: {
-                0: ["1", "4", "12"],
-                1: ["0", "2"],
-                2: ["1", "3"],
-                3: ["2", "5", "12"],
-                4: ["0", "6"],
-                5: ["3", "7"],
-                6: ["4", "8"],
-                7: ["5", "11"],
-                8: ["6", "9", "12"],
-                9: ["8", "10"],
-                10: ["9", "11"],
-                11: ["7", "10", "12"],
-                12: ["0", "3", "8", "11"]
-            },
-            cardSize: 65,
-            cardExpandedSize: 75,
-            tileSize: 50
-        }],
-        dl = {
-            id: "plusSign",
-            tiles: [{
+                id: "connected_rings",
+                tiles: [{
                     id: "0",
                     pos: {
-                        x: 227,
+                        x: 136,
                         y: 356
                     }
                 }, {
                     id: "1",
                     pos: {
-                        x: 318,
+                        x: 227,
                         y: 356
                     }
                 }, {
                     id: "2",
                     pos: {
+                        x: 318,
+                        y: 356
+                    }
+                }, {
+                    id: "3",
+                    pos: {
+                        x: 409,
+                        y: 356
+                    }
+                }, {
+                    id: "4",
+                    pos: {
                         x: 136,
                         y: 447
                     }
                 }, {
-                    id: "3",
+                    id: "5",
                     pos: {
                         x: 227,
                         y: 447
                     }
                 }, {
-                    id: "4",
+                    id: "6",
                     pos: {
                         x: 318,
+                        y: 447
+                    }
+                }, {
+                    id: "7",
+                    pos: {
+                        x: 409,
+                        y: 447
+                    }
+                }, {
+                    id: "8",
+                    pos: {
+                        x: 136,
+                        y: 538
+                    }
+                }, {
+                    id: "9",
+                    pos: {
+                        x: 227,
+                        y: 538
+                    }
+                }, {
+                    id: "10",
+                    pos: {
+                        x: 318,
+                        y: 538
+                    }
+                }, {
+                    id: "11",
+                    pos: {
+                        x: 409,
+                        y: 538
+                    }
+                }, {
+                    id: "12",
+                    pos: {
+                        x: 136,
+                        y: 629
+                    }
+                }, {
+                    id: "13",
+                    pos: {
+                        x: 227,
+                        y: 629
+                    }
+                }, {
+                    id: "14",
+                    pos: {
+                        x: 318,
+                        y: 629
+                    }
+                }, {
+                    id: "15",
+                    pos: {
+                        x: 409,
+                        y: 629
+                    }
+                }],
+                neighbors: {
+                    0: ["1", "4", "5"],
+                    1: ["0", "2"],
+                    2: ["1", "3"],
+                    3: ["2", "6", "7"],
+                    4: ["0", "8"],
+                    5: ["0", "6", "9"],
+                    6: ["3", "5", "10"],
+                    7: ["3", "11"],
+                    8: ["4", "12"],
+                    9: ["5", "10", "12"],
+                    10: ["6", "9", "15"],
+                    11: ["7", "15"],
+                    12: ["8", "9", "13"],
+                    13: ["12", "14"],
+                    14: ["13", "15"],
+                    15: ["10", "11", "14"]
+                },
+                cardSize: 65,
+                cardExpandedSize: 75,
+                tileSize: 50
+            }, {
+                id: "center_ring",
+                tiles: [{
+                    id: "0",
+                    pos: {
+                        x: 136,
+                        y: 356
+                    }
+                }, {
+                    id: "1",
+                    pos: {
+                        x: 227,
+                        y: 356
+                    }
+                }, {
+                    id: "2",
+                    pos: {
+                        x: 318,
+                        y: 356
+                    }
+                }, {
+                    id: "3",
+                    pos: {
+                        x: 409,
+                        y: 356
+                    }
+                }, {
+                    id: "4",
+                    pos: {
+                        x: 136,
                         y: 447
                     }
                 }, {
@@ -7177,35 +7075,135 @@
                 }, {
                     id: "7",
                     pos: {
-                        x: 227,
+                        x: 409,
                         y: 538
                     }
                 }, {
                     id: "8",
                     pos: {
-                        x: 318,
-                        y: 538
+                        x: 136,
+                        y: 629
                     }
                 }, {
                     id: "9",
-                    pos: {
-                        x: 409,
-                        y: 538
-                    }
-                },
-                {
-                    id: "10",
                     pos: {
                         x: 227,
                         y: 629
                     }
                 }, {
-                    id: "11",
+                    id: "10",
                     pos: {
                         x: 318,
                         y: 629
                     }
+                }, {
+                    id: "11",
+                    pos: {
+                        x: 409,
+                        y: 629
+                    }
+                }, {
+                    id: "12",
+                    pos: {
+                        x: 272,
+                        y: 493
+                    }
+                }],
+                neighbors: {
+                    0: ["1", "4", "12"],
+                    1: ["0", "2"],
+                    2: ["1", "3"],
+                    3: ["2", "5", "12"],
+                    4: ["0", "6"],
+                    5: ["3", "7"],
+                    6: ["4", "8"],
+                    7: ["5", "11"],
+                    8: ["6", "9", "12"],
+                    9: ["8", "10"],
+                    10: ["9", "11"],
+                    11: ["7", "10", "12"],
+                    12: ["0", "3", "8", "11"]
+                },
+                cardSize: 65,
+                cardExpandedSize: 75,
+                tileSize: 50
+            }],
+        dl = {
+            id: "plusSign",
+            tiles: [{
+                id: "0",
+                pos: {
+                    x: 227,
+                    y: 356
                 }
+            }, {
+                id: "1",
+                pos: {
+                    x: 318,
+                    y: 356
+                }
+            }, {
+                id: "2",
+                pos: {
+                    x: 136,
+                    y: 447
+                }
+            }, {
+                id: "3",
+                pos: {
+                    x: 227,
+                    y: 447
+                }
+            }, {
+                id: "4",
+                pos: {
+                    x: 318,
+                    y: 447
+                }
+            }, {
+                id: "5",
+                pos: {
+                    x: 409,
+                    y: 447
+                }
+            }, {
+                id: "6",
+                pos: {
+                    x: 136,
+                    y: 538
+                }
+            }, {
+                id: "7",
+                pos: {
+                    x: 227,
+                    y: 538
+                }
+            }, {
+                id: "8",
+                pos: {
+                    x: 318,
+                    y: 538
+                }
+            }, {
+                id: "9",
+                pos: {
+                    x: 409,
+                    y: 538
+                }
+            },
+            {
+                id: "10",
+                pos: {
+                    x: 227,
+                    y: 629
+                }
+            }, {
+                id: "11",
+                pos: {
+                    x: 318,
+                    y: 629
+                }
+            }
             ],
             neighbors: {
                 0: ["1", "3"],
@@ -7378,103 +7376,103 @@
         }, {
             id: "outer_ring",
             tiles: [{
-                    id: "0",
-                    pos: {
-                        x: 182,
-                        y: 356
-                    }
-                }, {
-                    id: "1",
-                    pos: {
-                        x: 273,
-                        y: 356
-                    }
-                }, {
-                    id: "2",
-                    pos: {
-                        x: 364,
-                        y: 356
-                    }
-                }, {
-                    id: "3",
-                    pos: {
-                        x: 182,
-                        y: 447
-                    }
-                }, {
-                    id: "4",
-                    pos: {
-                        x: 364,
-                        y: 447
-                    }
-                }, {
-                    id: "5",
-                    pos: {
-                        x: 182,
-                        y: 538
-                    }
-                }, {
-                    id: "6",
-                    pos: {
-                        x: 364,
-                        y: 538
-                    }
-                },
-                {
-                    id: "7",
-                    pos: {
-                        x: 182,
-                        y: 629
-                    }
-                }, {
-                    id: "8",
-                    pos: {
-                        x: 273,
-                        y: 629
-                    }
-                }, {
-                    id: "9",
-                    pos: {
-                        x: 364,
-                        y: 629
-                    }
-                }, {
-                    id: "10",
-                    pos: {
-                        x: 91,
-                        y: 403
-                    }
-                }, {
-                    id: "11",
-                    pos: {
-                        x: 91,
-                        y: 494
-                    }
-                }, {
-                    id: "12",
-                    pos: {
-                        x: 91,
-                        y: 585
-                    }
-                }, {
-                    id: "13",
-                    pos: {
-                        x: 455,
-                        y: 403
-                    }
-                }, {
-                    id: "14",
-                    pos: {
-                        x: 455,
-                        y: 494
-                    }
-                }, {
-                    id: "15",
-                    pos: {
-                        x: 455,
-                        y: 585
-                    }
+                id: "0",
+                pos: {
+                    x: 182,
+                    y: 356
                 }
+            }, {
+                id: "1",
+                pos: {
+                    x: 273,
+                    y: 356
+                }
+            }, {
+                id: "2",
+                pos: {
+                    x: 364,
+                    y: 356
+                }
+            }, {
+                id: "3",
+                pos: {
+                    x: 182,
+                    y: 447
+                }
+            }, {
+                id: "4",
+                pos: {
+                    x: 364,
+                    y: 447
+                }
+            }, {
+                id: "5",
+                pos: {
+                    x: 182,
+                    y: 538
+                }
+            }, {
+                id: "6",
+                pos: {
+                    x: 364,
+                    y: 538
+                }
+            },
+            {
+                id: "7",
+                pos: {
+                    x: 182,
+                    y: 629
+                }
+            }, {
+                id: "8",
+                pos: {
+                    x: 273,
+                    y: 629
+                }
+            }, {
+                id: "9",
+                pos: {
+                    x: 364,
+                    y: 629
+                }
+            }, {
+                id: "10",
+                pos: {
+                    x: 91,
+                    y: 403
+                }
+            }, {
+                id: "11",
+                pos: {
+                    x: 91,
+                    y: 494
+                }
+            }, {
+                id: "12",
+                pos: {
+                    x: 91,
+                    y: 585
+                }
+            }, {
+                id: "13",
+                pos: {
+                    x: 455,
+                    y: 403
+                }
+            }, {
+                id: "14",
+                pos: {
+                    x: 455,
+                    y: 494
+                }
+            }, {
+                id: "15",
+                pos: {
+                    x: 455,
+                    y: 585
+                }
+            }
             ],
             neighbors: {
                 0: ["1", "3", "10"],
@@ -7657,7 +7655,7 @@
     }
 
     function il(a) {
-        return m(function*() {
+        return m(function* () {
             yield a.u ? O(dj(a.va), a.actions) : bj(a.va, a.actions, 500);
             for (a.va.style.marginTop = "0px"; a.g.lastChild;) a.g.lastChild.remove();
             a.i = !1
@@ -7885,12 +7883,12 @@
     function Il(a) {
         return Ue(a.find(Hl, El))
     }
-    var El = class extends A {};
+    var El = class extends A { };
 
     function Jl(a) {
         return Ue(a.find(Hl, Gl))
     }
-    var Gl = class extends A {};
+    var Gl = class extends A { };
 
     function Dl(a, b, c, d, e) {
         d.appendChild(a);
@@ -8067,7 +8065,7 @@
         create() {
             const a = this.ha.get(X).id === "player";
             var b = a ? Il(this.g) : Jl(this.g);
-            if (this.U.length === 0) return new q(() => {});
+            if (this.U.length === 0) return new q(() => { });
             b = (new Sl(this.U, 1, void 0, this.ha, b, this.g, this.j, 0, 0)).create();
             return new n([new q(() => {
                 S(R(), a ? w.Dd : w.Xc)
@@ -8133,7 +8131,7 @@
             }
             const c = new a(b);
             this.o = Oj.filter(d => !c.has(d.id));
-            for (const d of c.values())(a = Lj[d]) && a.type === "legendary_wildcard" && $l(this, a);
+            for (const d of c.values()) (a = Lj[d]) && a.type === "legendary_wildcard" && $l(this, a);
             Sa(this.o)
         }
     };
@@ -8157,18 +8155,18 @@
         return ek(`${b.id}-${d}`, b, new ck, c)
     }
     var gm = class {
-            constructor(a) {
-                this.cardSize = a;
-                this.i = new Map;
-                this.g = []
-            }
-            j() {
-                return this.g.shift()
-            }
-            Za() {
-                return this.g.length === 0
-            }
-        },
+        constructor(a) {
+            this.cardSize = a;
+            this.i = new Map;
+            this.g = []
+        }
+        j() {
+            return this.g.shift()
+        }
+        Za() {
+            return this.g.length === 0
+        }
+    },
         hm = class extends gm {
             constructor(a) {
                 super(new D(a.cardSize, a.cardSize));
@@ -8180,7 +8178,7 @@
             constructor() {
                 super(new D(84, 84))
             }
-            j() {}
+            j() { }
             Za() {
                 return !1
             }
@@ -8194,7 +8192,7 @@
             else {
                 c = document.createDocumentFragment();
                 var d = 0;
-                for (const f of e)(d = b.substring(d, f.index)) && c.appendChild(document.createTextNode(d)), d = document.createElement("span"), d.classList.add("ddl-match-dialog-highlight"), d.appendChild(document.createTextNode(f[1])), c.appendChild(d), d = f.index + f[0].length;
+                for (const f of e) (d = b.substring(d, f.index)) && c.appendChild(document.createTextNode(d)), d = document.createElement("span"), d.classList.add("ddl-match-dialog-highlight"), d.appendChild(document.createTextNode(f[1])), c.appendChild(d), d = f.index + f[0].length;
                 (b = b.substring(d)) && c.appendChild(document.createTextNode(b))
             }
         }
@@ -8299,7 +8297,7 @@
     const wm = [2, 4, 6, 8, 9, 10];
 
     function xm(a) {
-        return m(function*() {
+        return m(function* () {
             var b = a.g.get(X).Qa.U,
                 c = a.u.find(Y).filter(g => g.get(Y).T === void 0);
             const d = [];
@@ -8384,10 +8382,10 @@
         Tf(a.v, a.j, ["pointerup", "pointercancel", "lostpointercapture"], p => {
             p = p.rb;
             e === p.pointerId && (a.ka = !1, p = zh(p, a.j).add(h), (p = Em(p, Cm(a))) ? d.resolve({
-                    ya: p,
-                    T: a.H,
-                    ha: a.ha
-                }) :
+                ya: p,
+                T: a.H,
+                ha: a.ha
+            }) :
                 (Uf(a.v), Bm(a, d), p = new mk(b, {
                     pos: g,
                     size: b.get(V).Aa,
@@ -8405,7 +8403,7 @@
     }
 
     function Gm(a) {
-        return m(function*() {
+        return m(function* () {
             const b = If(),
                 c = a.ha.get(X).Qa,
                 d = [...c.U, ...c.g];
@@ -8424,7 +8422,7 @@
                         })
                     }
                 } else
-                    for (f of c.g) f.get(hk).set(!1);
+                for (f of c.g) f.get(hk).set(!1);
             f = yield b.promise;
             Fm(a, c);
             return f
@@ -8439,7 +8437,7 @@
     }
 
     function Hm(a, b, c) {
-        m(function*() {
+        m(function* () {
             S(a.i, w.nc);
             yield Jm(a, b);
             c.resolve({
@@ -8451,7 +8449,7 @@
     }
 
     function Im(a, b, c) {
-        m(function*() {
+        m(function* () {
             a.N = !0;
             Km(a, !1);
             Uf(a.u);
@@ -8479,7 +8477,7 @@
     }
 
     function Jm(a, b) {
-        return m(function*() {
+        return m(function* () {
             a.H = void 0;
             b.get(gk).set(!1);
             yield il(a.g);
@@ -8643,7 +8641,7 @@
         }
         execute() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 const b = U(Mj[a.O].Db);
                 yield O(mm(a.H, b), a.actions);
                 yield P(2E3, a.actions);
@@ -8660,15 +8658,15 @@
     }
 
     function Tm(a, b, c, d, e, f, g, h, l, p) {
-        return m(function*() {
+        return m(function* () {
             const x = a.T.get(W).definition.id;
-            yield(new(Rm.get(x))(a, b, c, d, e, f, g, h, l, p)).execute()
+            yield (new (Rm.get(x))(a, b, c, d, e, f, g, h, l, p)).execute()
         })
     }
     class Um extends Qm {
         i() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 a.v.get(X).Eb = !1
             })
         }
@@ -8677,7 +8675,7 @@
     class Vm extends Qm {
         i() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 a.ha.get(X).Cc.Gc = 2
             })
         }
@@ -8686,7 +8684,7 @@
     class Wm extends Qm {
         i() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 var b = a.g.find(Y).filter(e => e.get(Y).T !== void 0);
                 Sa(b);
                 b = [b.pop(), b.pop()].filter(e => !!e);
@@ -8712,7 +8710,7 @@
     class Xm extends Qm {
         i() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 var b = a.g.find(Y).filter(d => {
                     d = d.get(Y);
                     let e = !1;
@@ -8743,15 +8741,15 @@
     Sm("wildcard_hunter_moon", Xm);
 
     function Ym(a, b, c = !0) {
-        return m(function*() {
+        return m(function* () {
             const d = a.N.j(),
                 e = b.get(X).Qa;
-            d ? yield qk(e, d, a.actions, a.g, !0, c): yield sk(e, a.actions)
+            d ? yield qk(e, d, a.actions, a.g, !0, c) : yield sk(e, a.actions)
         })
     }
 
     function Zm(a) {
-        return m(function*() {
+        return m(function* () {
             const b = [];
             for (var c = 0; c < 2; c++) b.push(Promise.all([Ym(a, a.o, c === 0), Ym(a, a.j, !1)]));
             c = a.o.get(X).Qa;
@@ -8769,7 +8767,7 @@
     }
 
     function $m(a) {
-        return m(function*() {
+        return m(function* () {
             Bh("ddl-has_seen_wildcard_tutorial", !1) || a.ta.length !== 1 || (Ch("ddl-has_seen_wildcard_tutorial", !0), yield O(mm(a.i, U("wildcardintro2")), a.actions), yield P(3500, a.actions), yield O(nm(a.i, U("wildcardintro3")), a.actions), yield P(3E3, a.actions), We(a.actions, om(a.i)))
         })
     }
@@ -8782,7 +8780,7 @@
     }
 
     function bn(a, b) {
-        return m(function*() {
+        return m(function* () {
             const c = b.get(X).id === "player" ? Il(a.g).get(Hl) : Jl(a.g).get(Hl);
             yield Ym(a, b);
             We(a.actions, cj(c.g))
@@ -8790,7 +8788,7 @@
     }
 
     function cn(a, b) {
-        return m(function*() {
+        return m(function* () {
             var c = b.get(X);
             if (c.id === "player") c = yield Gm(new Lm(a.g, b, a.H, a.actions, a.Oa));
             else if (c.id === "moon") c = yield xm(a.Ta);
@@ -8800,7 +8798,7 @@
     }
 
     function dn(a, b) {
-        return m(function*() {
+        return m(function* () {
             var c = Gj,
                 d = b.T.get(W);
             if (d.type === "moon") {
@@ -8843,7 +8841,7 @@
     }
 
     function fn(a, b) {
-        return m(function*() {
+        return m(function* () {
             const c = b.get(X).id === "player" ? Il(a.g).get(Hl) : Jl(a.g).get(Hl);
             We(a.actions, dj(c.g));
             a.Da = (a.Da + 1) % 2;
@@ -8853,7 +8851,7 @@
     }
 
     function gn(a) {
-        return m(function*() {
+        return m(function* () {
             yield Tk(a.u, a.actions);
             yield Zm(a);
             for (yield $m(a); !an(a);) {
@@ -8886,7 +8884,7 @@
     }
 
     function en(a) {
-        return m(function*() {
+        return m(function* () {
             Bh("ddl-has_played_wildcard_tutorial", !1) || (Ch("ddl-has_played_wildcard_tutorial", !0), yield P(500, a.actions), yield O(mm(a.i, U("wildcard_finish")), a.actions), yield P(3E3, a.actions), We(a.actions, om(a.i)))
         })
     }
@@ -8919,7 +8917,7 @@
     }
 
     function kn(a, b, c, d, e = 300) {
-        return m(function*() {
+        return m(function* () {
             yield O(new v(e, c, d, f => {
                 a.W.style.opacity = `${f}`
             }), b)
@@ -8938,10 +8936,10 @@
             this.Da = a;
             this.W = b
         }
-        update() {}
+        update() { }
         play() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 yield a.o();
                 const b = yield a.H();
                 yield a.u();
@@ -8975,7 +8973,7 @@
         }
         o() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 var b = a.Oa,
                     c = a.N.id,
                     d = a.ka.length;
@@ -9011,7 +9009,7 @@
         }
         H() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 if (mj) {
                     var b = Promise,
                         c = b.any,
@@ -9037,7 +9035,7 @@
         }
         u() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 a.j.j && (yield pn(a.j));
                 rj(a.v, 2500);
                 yield kn(a, a.actions, 1, 0, 1E3);
@@ -9122,7 +9120,7 @@
     }
 
     function An(a) {
-        return m(function*() {
+        return m(function* () {
             const b = a.i.get(E),
                 c = a.i.get(V).Aa,
                 d = a.i.get(T).el;
@@ -9140,14 +9138,14 @@
     }
 
     function Bn(a) {
-        return m(function*() {
+        return m(function* () {
             const b = a.i.get(W);
             return hl(a.ta, b.definition, 144)
         })
     }
 
     function Cn(a) {
-        return m(function*() {
+        return m(function* () {
             const b = jl(a.ta, "continue");
             return new Promise(c => {
                 const d = () => {
@@ -9204,7 +9202,7 @@
         }
         o() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 C(a.j,
                     a.actions);
                 C(a.j, new B(new E, new gf));
@@ -9225,7 +9223,7 @@
         }
         H() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 yield a.Ta;
                 yield An(a);
                 var b = Promise,
@@ -9243,7 +9241,7 @@
         }
         u() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 yield O(Ul(), a.actions);
                 a.W.remove();
                 yield P(750, a.actions);
@@ -9322,14 +9320,14 @@
     }
 
     function Jn(a) {
-        m(function*() {
+        m(function* () {
             yield a.delay(250);
             yield In(a, ".ddl-progress-results-title")
         })
     }
 
     function Kn(a) {
-        return m(function*() {
+        return m(function* () {
             const b = a.j.length,
                 c = b < a.g.g;
             b === a.g.g && (Ln(a, b), S(R(), w.Ob));
@@ -9349,7 +9347,7 @@
     }
 
     function On(a, b) {
-        m(function*() {
+        m(function* () {
             const c = b < a.g.g - 1,
                 d = a.mode === 0,
                 e = [Pn(a, b, !1, d)];
@@ -9359,7 +9357,7 @@
     }
 
     function Qn(a) {
-        m(function*() {
+        m(function* () {
             yield a.delay(500);
             yield In(a, ".ddl-progress-results-stats");
             const b = ln(a, ".ddl-progress-results-level-stars"),
@@ -9375,13 +9373,13 @@
     }
 
     function Sn(a, b) {
-        return m(function*() {
+        return m(function* () {
             return bj(ln(a, b), a.actions)
         })
     }
 
     function Tn(a) {
-        return m(function*() {
+        return m(function* () {
             yield In(a, ".ddl-progress-next-level-title");
             Ln(a, a.mode === 0 ? 0 : a.g.g);
             S(R(), w.Ob)
@@ -9389,14 +9387,14 @@
     }
 
     function Un(a) {
-        return m(function*() {
+        return m(function* () {
             const b = a.g.g;
             b < 0 || (b > 0 && (yield Pn(a, b - 1, !0, !0)), xj(Gj, 4), Ln(a, b), S(R(), Vn[b]), yield $i(Nn(a, b, !1, 3)), Nn(a, b, !0, 0))
         })
     }
 
     function Wn(a) {
-        return m(function*() {
+        return m(function* () {
             yield Xn(a);
             S(R(), w.wb);
             a.mode !== 2 && a.mode !== 1 || S(R(), w.Md);
@@ -9405,13 +9403,13 @@
     }
 
     function Yn(a) {
-        return m(function*() {
+        return m(function* () {
             yield Promise.all([Sn(a, a.buttons), Sn(a, ".ddl-progress-results"), Sn(a, a.vb)])
         })
     }
 
     function Zn() {
-        return m(function*() {
+        return m(function* () {
             const a = Gj;
             yield xj(a, 1);
             yield Dj(a)
@@ -9419,7 +9417,7 @@
     }
 
     function $n(a) {
-        return m(function*() {
+        return m(function* () {
             rj(R(), 1875);
             yield Promise.all([kn(a, a.actions, 1, 0, 750), a.delay(1500)]);
             a.W.remove()
@@ -9427,7 +9425,7 @@
     }
 
     function ao(a) {
-        return m(function*() {
+        return m(function* () {
             const b = [];
             for (let c = 0; c < a.g.g; c++) b.push(bo(a, c));
             for (const c of a.O) b.push(Sn(a, c));
@@ -9436,7 +9434,7 @@
     }
 
     function co(a) {
-        return m(function*() {
+        return m(function* () {
             const b = [O(new v(1E3, 1, 0, c => {
                 a.v.style.opacity = `${c}`
             }), a.actions)];
@@ -9446,7 +9444,7 @@
     }
 
     function fo(a) {
-        return m(function*() {
+        return m(function* () {
             const b = [];
             for (const c of go) {
                 const d = N(Gn, {
@@ -9461,7 +9459,7 @@
     }
 
     function ho(a) {
-        return m(function*() {
+        return m(function* () {
             const b = [],
                 c = new D(56, 56);
             for (let e = 0; e < a.g.i.length; e++) {
@@ -9478,10 +9476,10 @@
     }
 
     function Rn(a, b, c, d) {
-        return m(function*() {
+        return m(function* () {
             c === 0 && d === 0 ? b.textContent = "0" : yield O(new v(800, c, d, e => {
                 e = Math.floor(e);
-                b.textContent = `${e>0?e:""}`
+                b.textContent = `${e > 0 ? e : ""}`
             }), a.actions)
         })
     }
@@ -9498,7 +9496,7 @@
     }
 
     function eo(a, b) {
-        return m(function*() {
+        return m(function* () {
             const c = a.j[b],
                 d = c.get(F);
             yield O(new v(1E3, 1, 0, e => {
@@ -9514,7 +9512,7 @@
         f.setAttribute("x1", "270");
         f.setAttribute("y1", `${jo[b][0]}`);
         f.setAttribute("x2", "270");
-        f.setAttribute("y2", `${jo[b][d?0:1]}`);
+        f.setAttribute("y2", `${jo[b][d ? 0 : 1]}`);
         f.classList.add(c ? "ddl-progress-line-full" : "ddl-progress-line-empty");
         a.v.appendChild(f);
         c && a.O.push(f);
@@ -9529,14 +9527,14 @@
     }
 
     function bo(a, b) {
-        return m(function*() {
+        return m(function* () {
             yield $i(a.j[b].get(nf));
             yield $i(Nn(a, b, !0, 4))
         })
     }
 
     function Xn(a) {
-        return m(function*() {
+        return m(function* () {
             const b = Z(a, ".ddl-progress-continue-button");
             return new Promise(c => {
                 const d = () => {
@@ -9551,7 +9549,7 @@
         constructor(a, b, c) {
             var d = c === 3 || c === 4 ? b.j + 1 : b.j;
             d = b.g >= 0 ? U("leveltitle").replace("%NUMBER%", `${d}`) : "";
-            const e = U("leveltitle").replace("%NUMBER%", `${b.j+1}`);
+            const e = U("leveltitle").replace("%NUMBER%", `${b.j + 1}`);
             var f = c === 4 ? "try_again" : c === 3 ? "playagain" : "continue",
                 g = U("results_matchstars"),
                 h = U("results_totalstars");
@@ -9607,7 +9605,7 @@
         }
         H() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 a.mode !== 0 && a.mode !== 2 || S(R(), w.Ld);
                 var b = [2, 3, 4].includes(a.mode);
                 const c = Gj,
@@ -9674,7 +9672,7 @@
     };
 
     function lo(a, b) {
-        return m(function*() {
+        return m(function* () {
             a && (yield b)
         })
     }
@@ -10104,11 +10102,11 @@
     }
 
     function pn(a) {
-        return m(function*() {
+        return m(function* () {
             a.j && (a.g.removeEventListener("click", a.H), S(R(), w.Hd), a.button.style.visibility = "visible", yield O(new n([new t([new n([new r(100), new v(200, 1, 0, b => {
                 a.i.style.opacity = `${b}`;
                 a.g.style.opacity = `${b}`;
-                a.button.style.opacity = `${1-b}`
+                a.button.style.opacity = `${1 - b}`
             })]), u(new v(300, 0, 1060, b => {
                 a.i.style.transform = `translateY(${b}px) scale(${a.o})`
             }), Ha)])]), a.actions), a.g.style.visibility = "hidden", a.i.style.visibility = "hidden", a.i.style.transform = "translateY(1060) scale(1)", a.j = !1, a.o = 1)
@@ -10121,48 +10119,48 @@
     }
 
     function to(a) {
-        return m(function*() {
+        return m(function* () {
             a.j || (a.j = !0, a.o = 1, a.g.style.visibility = "visible", a.i.style.visibility = "visible", a.g.style.opacity = "0", a.i.style.opacity = "0", a.i.style.transform = `translateY(${1060}) scale(${a.o})`, S(R(), w.Id), yield O(new t([new v(200, 0, 1, b => {
-                    a.i.style.opacity = `${b}`;
-                    a.g.style.opacity = `${b}`;
-                    a.button.style.opacity = `${1-b}`
-                }), u(new v(300, 1060, 0, b => {
-                    a.i.style.transform = `translateY(${b}px) scale(${a.o})`
-                }), Ja)]), a.actions), a.g.addEventListener("click", a.H), a.button.style.visibility =
+                a.i.style.opacity = `${b}`;
+                a.g.style.opacity = `${b}`;
+                a.button.style.opacity = `${1 - b}`
+            }), u(new v(300, 1060, 0, b => {
+                a.i.style.transform = `translateY(${b}px) scale(${a.o})`
+            }), Ja)]), a.actions), a.g.addEventListener("click", a.H), a.button.style.visibility =
                 "hidden")
         })
     }
     var ro = class {
-            constructor(a) {
-                this.i = N(oo, {
-                    title: U("rules_title"),
-                    Ve: U("rules_instruction1"),
-                    We: U("rules_instruction2"),
-                    De: U("rules_match"),
-                    Ie: U("rules_phasepair_title"),
-                    He: U("rules_phasepair_points"),
-                    fe: U("rules_fullmoon_title"),
-                    Zd: U("rules_fullmoon_points"),
-                    Xd: U("rules_cycle_title"),
-                    Wd: U("rules_cycle_points"),
-                    Sd: U("bonus_title"),
-                    Rd: U("bonus_instruction")
-                });
-                this.button = N(no);
-                this.u = new Se;
-                this.actions = new B(new Ve);
-                this.o = 1;
-                this.j = !1;
-                this.H = b => {
-                    b.target === b.currentTarget && this.j && (pn(this), this.g.removeEventListener("click",
-                        this.H))
-                };
-                this.g = a.querySelector(".ddl-rules-container")
-            }
-            update(a) {
-                this.u.update(a)
-            }
-        },
+        constructor(a) {
+            this.i = N(oo, {
+                title: U("rules_title"),
+                Ve: U("rules_instruction1"),
+                We: U("rules_instruction2"),
+                De: U("rules_match"),
+                Ie: U("rules_phasepair_title"),
+                He: U("rules_phasepair_points"),
+                fe: U("rules_fullmoon_title"),
+                Zd: U("rules_fullmoon_points"),
+                Xd: U("rules_cycle_title"),
+                Wd: U("rules_cycle_points"),
+                Sd: U("bonus_title"),
+                Rd: U("bonus_instruction")
+            });
+            this.button = N(no);
+            this.u = new Se;
+            this.actions = new B(new Ve);
+            this.o = 1;
+            this.j = !1;
+            this.H = b => {
+                b.target === b.currentTarget && this.j && (pn(this), this.g.removeEventListener("click",
+                    this.H))
+            };
+            this.g = a.querySelector(".ddl-rules-container")
+        }
+        update(a) {
+            this.u.update(a)
+        }
+    },
         qo;
 
     function uo(a, b) {
@@ -10195,32 +10193,32 @@
     };
 
     function zo(a, b) {
-        return m(function*() {
+        return m(function* () {
             a.o = b;
             return yield b.play()
         })
     }
     var Ao = class {
-            constructor(a) {
-                this.Ha = a;
-                this.i = po()
-            }
-            play() {
-                const a = this;
-                return m(function*() {
-                    for (;;) {
-                        const b = N(xo);
-                        a.Ha.appendChild(b);
-                        yield a.j(b);
-                        b.remove()
-                    }
-                })
-            }
-            update(a) {
-                let b;
-                (b = this.o) == null || b.update(a)
-            }
-        },
+        constructor(a) {
+            this.Ha = a;
+            this.i = po()
+        }
+        play() {
+            const a = this;
+            return m(function* () {
+                for (; ;) {
+                    const b = N(xo);
+                    a.Ha.appendChild(b);
+                    yield a.j(b);
+                    b.remove()
+                }
+            })
+        }
+        update(a) {
+            let b;
+            (b = this.o) == null || b.update(a)
+        }
+    },
         Co = class extends Ao {
             constructor() {
                 super(...arguments);
@@ -10228,7 +10226,7 @@
             }
             j(a) {
                 const b = this;
-                return m(function*() {
+                return m(function* () {
                     b.g.g = -1;
                     yield zo(b, new mo(a, b.g, 0));
                     var c = b.g.j === 0 ? b.g.i.length === 0 ? [$k, bl, dl] : [$k, tm(cl), tm(el)] : [tm(al), tm(cl), tm(el)];
@@ -10285,7 +10283,7 @@
             }
             j(a) {
                 const b = this;
-                return m(function*() {
+                return m(function* () {
                     if (!jj || jj === "match") yield zo(b, new qn(a, $k, Oj.map(c => new fk(c)), b.i, 0));
                     else if (jj === "outro") {
                         b.g.j = 3;
@@ -10324,7 +10322,7 @@
         }
         o() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 var b = a.W.querySelector(".ddl-loading-spinner").getContext("2d");
                 a.g.g = [new yf(a.g), new Xe(a.g), new xf(a.g, b)];
                 I(0);
@@ -10336,7 +10334,7 @@
         }
         H() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 const b = [xi([13, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 18, 19, 20, 21, 22, 23]), (new Kg(Fe("border.png"))).i(), (new Kg(Fe("button_border.png"))).i(), (new Kg(Fe("border-card.png"))).i(), Fh().load(xe, ye, sj, "/"), a.v.load(Fe("intro.mp4")), id.Xb.i()];
                 yield Promise.all([...b, ki(1500)]);
                 yield O(Ul(), a.actions);
@@ -10349,7 +10347,7 @@
         }
         u() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 var b = Gj;
                 b.o.style.visibility =
                     "visible";
@@ -10361,7 +10359,7 @@
     };
 
     function Go(a) {
-        return m(function*() {
+        return m(function* () {
             yield a.g.promise
         })
     }
@@ -10396,16 +10394,16 @@
                     a.g.style.opacity = `${d}`
                 })]));
                 else if (c.type === 1) We(a.actions, new n([new v(300, 1, 0, d => {
-                a.g.style.opacity = `${d}`
-            }), new q(() => {
-                a.g.style.visibility = "hidden"
-            })]));
-            else throw Error("H`" + c.type);
+                    a.g.style.opacity = `${d}`
+                }), new q(() => {
+                    a.g.style.visibility = "hidden"
+                })]));
+                else throw Error("H`" + c.type);
         }
     }
 
     function Mo(a, b) {
-        return m(function*() {
+        return m(function* () {
             if (!a.N) {
                 a.N = Ul(2E3);
                 const c = [a.N];
@@ -10440,7 +10438,7 @@
         }
         o() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 jn(a, 1);
                 J(a.j.va, 24, 175, 70, 18);
                 a.video.g.addEventListener("timeupdate", () => {
@@ -10462,7 +10460,7 @@
         H() {
             const a =
                 this;
-            return m(function*() {
+            return m(function* () {
                 G.c = 2;
                 I(1);
                 const b = fj.Hc();
@@ -10472,7 +10470,7 @@
                     d.g.muted = !e
                 });
                 const c = a.video.play();
-                (yield Promise.race([c.Lc.then(() => !1), Go(a.j).then(() => m(function*() {
+                (yield Promise.race([c.Lc.then(() => !1), Go(a.j).then(() => m(function* () {
                     I(101);
                     yield Mo(a, !0);
                     return !0
@@ -10484,7 +10482,7 @@
         }
         u() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 a.W.remove();
                 yield O(Wl(), a.actions);
                 xj(Gj, 1)
@@ -10560,14 +10558,14 @@
 
     function Ro(a) {
         var b = U("tutorial_01");
-        return m(function*() {
+        return m(function* () {
             yield O(mm(a.v, b), a.actions);
             yield P(7E3, a.actions)
         })
     }
 
     function So(a) {
-        return m(function*() {
+        return m(function* () {
             G.c = 5;
             I(1);
             yield Promise.all([To(a, "waxing_crescent", "0"), Uo(a, U("tutorial_02"), 0)]);
@@ -10579,14 +10577,14 @@
     }
 
     function Uo(a, b, c) {
-        return m(function*() {
+        return m(function* () {
             yield O(nm(a.v, b), a.actions);
             c > 0 && (yield P(c, a.actions))
         })
     }
 
     function Wo(a) {
-        return m(function*() {
+        return m(function* () {
             G.c = 6;
             I(1);
             yield Promise.all([To(a, "third_quarter", "3"), Uo(a, U("tutorial_05"), 0)]);
@@ -10598,7 +10596,7 @@
     }
 
     function Xo(a) {
-        return m(function*() {
+        return m(function* () {
             G.c = 7;
             I(1);
             yield Promise.all([To(a, "new_moon", "6"), To(a, "third_quarter", "8")]);
@@ -10611,10 +10609,10 @@
     }
 
     function Yo(a) {
-        return m(function*() {
+        return m(function* () {
             G.c = 8;
             I(1);
-            yield Promise.all([To(a, "waning_gibbous", "5"), new Promise(b => m(function*() {
+            yield Promise.all([To(a, "waning_gibbous", "5"), new Promise(b => m(function* () {
                 yield P(1E3, a.actions);
                 yield Uo(a, U("tutorial_11"), 7E3);
                 b()
@@ -10623,7 +10621,7 @@
     }
 
     function Zo(a) {
-        return m(function*() {
+        return m(function* () {
             G.c = 9;
             I(1);
             yield Promise.all([Uo(a, U("tutorial_12"), 0), Vo(a, "full_moon", "2", {
@@ -10634,7 +10632,7 @@
     }
 
     function $o(a) {
-        return m(function*() {
+        return m(function* () {
             G.c = 10;
             I(1);
             yield Promise.all([Uo(a, U("tutorial_15"), 5E3), O((new Tl(a.o, a.g, a.i, a.u)).create(), a.actions)])
@@ -10642,10 +10640,10 @@
     }
 
     function ap(a) {
-        return m(function*() {
+        return m(function* () {
             G.c = 11;
             I(1);
-            yield Promise.all([Uo(a, U("landingpage_rules"), 7E3), new Promise(b => m(function*() {
+            yield Promise.all([Uo(a, U("landingpage_rules"), 7E3), new Promise(b => m(function* () {
                 yield P(1E3, a.actions);
                 yield aj(po().button, a.actions, 300);
                 b()
@@ -10654,7 +10652,7 @@
     }
 
     function bp(a) {
-        return m(function*() {
+        return m(function* () {
             yield Tk(a.i, a.actions);
             yield Ro(a);
             yield So(a);
@@ -10675,7 +10673,7 @@
     }
 
     function To(a, b, c) {
-        return m(function*() {
+        return m(function* () {
             var d = a.N;
             d = em(d, Lj[b], d.cardSize);
             const e = a.i.tiles.get(c),
@@ -10695,7 +10693,7 @@
     }
 
     function Vo(a, b, c, d) {
-        return m(function*() {
+        return m(function* () {
             var e = a.N;
             e = em(e, Lj[b], e.cardSize);
             yield dp(a, a.o, e);
@@ -10717,7 +10715,7 @@
     }
 
     function cp(a, b) {
-        return m(function*() {
+        return m(function* () {
             b.T.get(W);
             yield Xk(a.i, b.ya, b.T, a.actions);
             yield rk(b.ha.get(X).Qa, b.T);
@@ -10728,7 +10726,7 @@
     }
 
     function dp(a, b, c) {
-        return m(function*() {
+        return m(function* () {
             yield qk(b.get(X).Qa, c, a.actions, a.g)
         })
     }
@@ -10766,7 +10764,7 @@
         }
         o() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 G.c = 4;
                 I(1);
                 qj(R(), w.Jd, 750);
@@ -10797,8 +10795,8 @@
         }
         H() {
             const a = this;
-            return m(function*() {
-                (yield Promise.race([bp(a.v).then(() => !1), Go(a.i).then(() => m(function*() {
+            return m(function* () {
+                (yield Promise.race([bp(a.v).then(() => !1), Go(a.i).then(() => m(function* () {
                     I(102);
                     return !0
                 }))])) || (G.c = 12, I(1))
@@ -10806,7 +10804,7 @@
         }
         u() {
             const a = this;
-            return m(function*() {
+            return m(function* () {
                 rj(R(), 1875);
                 yield kn(a,
                     a.actions, 1, 0, 750);
@@ -10834,7 +10832,7 @@
     }
 
     function vg(a) {
-        m(function*() {
+        m(function* () {
             var b = a.u;
             b.g.appendChild(b.i);
             so(b);
@@ -10846,7 +10844,7 @@
             b = a.i.querySelector(".ddl-doodle-content");
             yield a.play(new Fo(b, a.j));
             if (ij)
-                for (;;) yield a.play(new Do(b));
+                for (; ;) yield a.play(new Do(b));
             yield a.play(new Oo(b, a.j));
             if (a.j) {
                 const c = a.j.g;
@@ -10902,14 +10900,14 @@
         }
         play(a) {
             const b = this;
-            return m(function*() {
+            return m(function* () {
                 b.g = a;
                 yield b.g.play();
                 b.g = void 0
             })
         }
     }
-    m(function*() {
+    m(function* () {
         var a = xh;
         kg = Date.now();
         G.d = a;
