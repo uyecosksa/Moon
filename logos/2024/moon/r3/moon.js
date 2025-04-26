@@ -5318,7 +5318,7 @@
 
     function Cj(a) {
         return m(function*() {
-            yield zj(a, 2, 2500, 5)
+            yield zj(a, 2, 2500, 1)
         })
     }
 
@@ -9674,7 +9674,7 @@
                         a.mode ===
                             3 && (yield ao(a));
                         b = In(a, a.buttons).then(() => {
-                            xj(c, 6)
+                            xj(c, 1)
                         });
                         yield Wn(a);
                         yield Yn(a);
