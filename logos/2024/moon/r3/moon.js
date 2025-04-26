@@ -3300,38 +3300,26 @@
         return b == a
     };
     var Jg = a => {
-        return new Promise((resolve) => {
-            // 创建字体检测元素
-            const testEl = document.createElement('span');
-            testEl.style.fontFamily = 'Nebulove';
-            testEl.style.position = 'absolute';
-            testEl.style.visibility = 'hidden';
-            testEl.textContent = 'Font Test';
-            document.body.appendChild(testEl);
-            
-            // 检查字体是否已加载
-            const checkFont = () => {
+        return new Promise(resolve => {
+            if (document.fonts && document.fonts.load) {
+                Promise.all([
+                    document.fonts.load('normal normal 1em Nebulove')
+                ])
+                .then(() => {
+                    resolve();
+                })
+                .catch(err => {
+                    console.warn('字体加载失败，使用后备字体:', err);
+                    resolve();
+                });
+                
+                // 设置超时保护
                 setTimeout(() => {
-                    if (document.fonts && document.fonts.check) {
-                        if (document.fonts.check('1em Nebulove')) {
-                            document.body.removeChild(testEl);
-                            resolve();
-                            return;
-                        }
-                    }
-                    // 如果5秒后仍未加载，也继续执行
-                    if (tries > 50) {
-                        document.body.removeChild(testEl);
-                        resolve();
-                        return;
-                    }
-                    tries++;
-                    checkFont();
-                }, 100);
-            };
-            
-            let tries = 0;
-            checkFont();
+                    resolve();
+                }, 5000);
+            } else {
+                setTimeout(resolve, 700);
+            }
         });
     };
         Ig = a => {
